@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vocabulary Trainer Pro (Grade 6)</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <script>
+        // 📦 Autark eingebettete und vollständig bereinigte Vokabeldaten für Klasse 6
+        const e6u1_data = [
+            { id: "1_1", eng: "media", phon: "['mi:diə]", ger: "Medien", ctx: "Today it's so easy to use media like chat or email. The story of the pop star's accident was in all the media." },
+            { id: "1_2", eng: "screen", phon: "[skri:n]", ger: "Bildschirm", ctx: "-" },
+            { id: "1_3", eng: "(to) download", phon: "[daʊn'ləʊd]", ger: "herunterladen", ctx: "Gegenteil: (to) upload = hochladen" },
+            { id: "1_4", eng: "(to) phone", phon: "[fəʊn]", ger: "anrufen, telefonieren", ctx: "verb: (to) phone – noun: phone = Telefon" },
+            { id: "1_5", eng: "camera", phon: "['kæmərə]", ger: "Fotoapparat; Kamera", ctx: "-" },
+            { id: "1_6", eng: "games console", phon: "[kən'səʊl]", ger: "Spielekonsole", ctx: "-" },
+            { id: "1_7", eng: "on TV", phon: "-", ger: "im Fernsehen", ctx: "-" },
+            { id: "1_8", eng: "(to) be on", phon: "[ɒn]", ger: "gezeigt werden (Kino, Fernsehen), stattfinden", ctx: "What's on at the theatre this evening?" },
+            { id: "1_9", eng: "news", phon: "[nju:z]", ger: "Nachrichten", ctx: "English: That's good news. / German: Das sind gute Nachrichten." },
+            { id: "1_10", eng: "9 am", phon: "[eɪ'em]", ger: "9 Uhr morgens / vormittags", ctx: "-" },
+            { id: "1_11", eng: "7 pm", phon: "[pi:'em]", ger: "7 Uhr nachmittags / abends, 19 Uhr", ctx: "-" },
+            { id: "1_12", eng: "international", phon: "[ɪntə'næʃnəl]", ger: "international", ctx: "Gegenteil: national ◀▶ international" },
+            { id: "1_13", eng: "past", phon: "[pɑ:st]", ger: "Vergangenheit", ctx: "-" },
+            { id: "1_14", eng: "gamer", phon: "['ɡeɪmə]", ger: "Spieler, Gamer", ctx: "-" },
+            { id: "1_15", eng: "exciting", phon: "[ɪk'saɪtɪŋ]", ger: "aufregend", ctx: "Gegenteil: exciting ◀▶ boring" },
+            { id: "1_16", eng: "(to) test", phon: "[test]", ger: "testen", ctx: "verb: (to) test – noun: test = Klassenarbeit, Test" },
+            { id: "1_17", eng: "company", phon: "['kʌmpəni]", ger: "Firma, Gesellschaft", ctx: "-" },
+            { id: "1_18", eng: "stone", phon: "[stəʊn]", ger: "Stein", ctx: "Beispiel: a stone circle" },
+            { id: "1_19", eng: "circle", phon: "['sɜ:kl]", ger: "Kreis", ctx: "-" },
+            { id: "1_20", eng: "calendar", phon: "['kælɪndə]", ger: "Kalender", ctx: "⚠️ Betonung auf der 1. Silbe: calendar" },
+            { id: "1_21", eng: "(to) build, built", phon: "[bɪld], [bɪlt]", ger: "bauen", ctx: "Unregelmäßiges Verb" },
+            { id: "1_22", eng: "against", phon: "[ə'ɡenst]", ger: "gegen", ctx: "Gegenteil: against ◀▶ for | Satz: Dave is fighting against Nick." },
+            { id: "1_23", eng: "stadium", phon: "['steɪdiəm]", ger: "Stadion", ctx: "-" },
+            { id: "1_24", eng: "match", phon: "[mætʃ]", ger: "Spiel, Wettkampf", ctx: "-" },
+            { id: "1_25", eng: "(to) win, won", phon: "[wɪn], [wʌn]", ger: "gewinnen", ctx: "Satz: I feel good when my football team wins." },
+            { id: "1_26", eng: "subject", phon: "['sʌbdʒɪkt]", ger: "Thema", ctx: "⚠️ subject = 1. Schulfach; 2. Thema" },
+            { id: "1_27", eng: "winner", phon: "['wɪnə]", ger: "Gewinner/in, Sieger/in", ctx: "-" },
+            { id: "1_28", eng: "problem", phon: "['prɒbləm]", ger: "Problem", ctx: "⚠️ Betonung auf der 1. Silbe: problem" },
+            { id: "1_29", eng: "prize", phon: "[praɪz]", ger: "Preis, Gewinn", ctx: "-" },
+            { id: "1_30", eng: "another", phon: "[ə'nʌðə]", ger: "ein/e andere/r/s; noch ein/e", ctx: "Sätze: Can I have another pet? Can I have another apple?" },
+            { id: "1_31", eng: "(to) go wrong", phon: "-", ger: "schiefgehen", ctx: "-" },
+            { id: "1_32", eng: "programme", phon: "['prəʊɡræm]", ger: "(Fernseh-)Sendung", ctx: "-" },
+            { id: "1_33", eng: "who", phon: "[hu:]", ger: "wem; wen", ctx: "Fragewort. Sätze: Who have you seen? Who is the message from?" },
+            { id: "1_34", eng: "detective", phon: "[dɪ'tektɪv]", ger: "Detektiv/in", ctx: "⚠️ Betonung auf der 2. Silbe: detective" },
+            { id: "1_35", eng: "detective series", phon: "[dɪ'tektɪv 'sɪəri:z]", ger: "Krimiserie", ctx: "Plural: detective series" },
+            { id: "1_36", eng: "documentary", phon: "[dɒkju'mentri]", ger: "Dokumentarfilm", ctx: "-" },
+            { id: "1_37", eng: "reality", phon: "[ri'æliti]", ger: "Realität, Wirklichkeit", ctx: "⚠️ Betonung auf der 2. Silbe: reality" },
+            { id: "1_38", eng: "soap (opera)", phon: "[səʊp]", ger: "Seifenoper, Soap", ctx: "soap = Seife | opera = Oper" },
+            { id: "1_39", eng: "crime", phon: "[kraɪm]", ger: "Verbrechen; Kriminalität", ctx: "⚠️ Crime is a big problem. EN: crime film, detective series" },
+            { id: "1_40", eng: "real", phon: "[rɪəl]", ger: "echt, wirklich", ctx: "-" },
+            { id: "1_41", eng: "type (of)", phon: "[taɪp]", ger: "Art, Sorte", ctx: "-" },
+            { id: "1_42", eng: "survey", phon: "['sɜ:veɪ]", ger: "Umfrage", ctx: "Wendung: (to) do a survey" },
+            { id: "1_43", eng: "(to) count", phon: "[kaʊnt]", ger: "zählen", ctx: "-" },
+            { id: "1_44", eng: "(to) chat (with)", phon: "[tʃæt]", ger: "chatten (mit); sich unterhalten (mit)", ctx: "verb: (to) chat – noun: chat = Unterhaltung" },
+            { id: "1_45", eng: "safe", phon: "[seɪf]", ger: "sicher (gefahrlos)", ctx: "Gegenteil: safe ◀▶ dangerous" },
+            { id: "1_46", eng: "more than", phon: "-", ger: "mehr als", ctx: "⚠️ Steigerung: much/many – more – (the) most" },
+            { id: "1_47", eng: "dark", phon: "[dɑ:k]", ger: "dunkel", ctx: "-" },
+            { id: "1_48", eng: "straight", phon: "[streɪt]", ger: "gerade; (Haare) glatt", ctx: "Haarstruktur: dark and straight" },
+            { id: "1_49", eng: "curly", phon: "['kɜ:li]", ger: "lockig", ctx: "Haarstruktur: blond and curly" },
+            { id: "1_50", eng: "bald", phon: "[bɔ:ld]", ger: "kahl, glatzköpfig", ctx: "He's bald." },
+            { id: "1_51", eng: "braces (pl)", phon: "['breɪsɪz]", ger: "(eine) Zahnklammer", ctx: "-" },
+            { id: "1_52", eng: "tooth, pl teeth", phon: "[tu:θ], [ti:θ]", ger: "Zahn", ctx: "Unregelmäßiger Plural" },
+            { id: "1_53", eng: "glasses (pl)", phon: "['ɡlɑ:sɪz]", ger: "(eine) Brille", ctx: "-" },
+            { id: "1_54", eng: "young", phon: "[jʌŋ]", ger: "jung", ctx: "Gegenteil: young ◀▶ old" },
+            { id: "1_55", eng: "kind", phon: "[kaɪnd]", ger: "nett, freundlich", ctx: "-" },
+            { id: "1_56", eng: "serious", phon: "['sɪəriəs]", ger: "ernst", ctx: "Sätze: Jen is a very serious person. Are you serious?" },
+            { id: "1_57", eng: "shy", phon: "[ʃaɪ]", ger: "scheu, schüchtern", ctx: "-" },
+            { id: "1_58", eng: "e-friend", phon: "['i:frend]", ger: "E-Mail-Freund/in", ctx: "-" },
+            { id: "1_59", eng: "eye", phon: "[aɪ]", ger: "Auge", ctx: "-" },
+            { id: "1_60", eng: "(to) stand, stood", phon: "[stænd], [stʊd]", ger: "stehen; sich (hin)stellen", ctx: "You don't need to stand." },
+            { id: "1_61", eng: "jacket", phon: "['dʒækɪt]", ger: "Jacke, Jackett", ctx: "-" },
+            { id: "1_62", eng: "exercise", phon: "['eksəsaɪz]", ger: "Übung, Aufgabe", ctx: "-" },
+            { id: "1_63", eng: "cook", phon: "[kʊk]", ger: "Koch, Köchin", ctx: "Beruf (two cooks)" },
+            { id: "1_64", eng: "I'd like you to be ...", phon: "-", ger: "Ich möchte, dass ihr ... seid.", ctx: "-" },
+            { id: "1_65", eng: "(to) put ... away", phon: "-", ger: "... weglegen, zur Seite legen", ctx: "-" },
+            { id: "1_66", eng: "(to) put up your hand", phon: "-", ger: "sich melden, aufzeigen", ctx: "They're putting up their hands." },
+            { id: "1_67", eng: "(to) repeat", phon: "[rɪ'pi:t]", ger: "wiederholen", ctx: "Could you repeat that, please?" },
+            { id: "1_68", eng: "Repeat after me.", phon: "-", ger: "Sprich / Sprecht mir nach.", ctx: "-" },
+            { id: "1_69", eng: "What's for homework?", phon: "-", ger: "Was haben wir als Hausaufgabe(n) auf?", ctx: "-" },
+            { id: "1_70", eng: "message in a bottle", phon: "-", ger: "Flaschenpost", ctx: "-" },
+            { id: "1_71", eng: "by the sea", phon: "[baɪ]", ger: "am Meer", ctx: "by ◀▶ near" },
+            { id: "1_72", eng: "situation", phon: "[sɪtʃu'eɪʃn]", ger: "Situation", ctx: "⚠️ Betonung auf der 3. Silbe: situation" },
+            { id: "1_73", eng: "path", phon: "[pɑ:θ]", ger: "Weg, Pfad", ctx: "-" },
+            { id: "1_74", eng: "suddenly", phon: "['sʌdənli]", ger: "plötzlich, auf einmal", ctx: "Adverb" },
+            { id: "1_75", eng: "(to) pick sth. up", phon: "[pɪk 'ʌp]", ger: "etwas aufheben (vom Boden), etwas hochheben", ctx: "-" },
+            { id: "1_76", eng: "(to) seem (to be / do)", phon: "[si:m]", ger: "erscheinen; (zu sein / zu tun) scheinen", ctx: "It seems big. He seems to be very sad." },
+            { id: "1_77", eng: "joke", phon: "[dʒəʊk]", ger: "Witz, Scherz", ctx: "I want to become a pirate. - Good joke!" },
+            { id: "1_78", eng: "alone", phon: "[ə'ləʊn]", ger: "allein", ctx: "Gegenteil: alone ◀▶ together" },
+            { id: "1_79", eng: "piece of paper", phon: "[pi:s əv 'peɪpə]", ger: "Stück Papier, Zettel", ctx: "piece = Stück, Teil" },
+            { id: "1_80", eng: "through", phon: "[θru:]", ger: "durch", ctx: "Satz: I can see the writing through the envelope." },
+            { id: "1_81", eng: "writing", phon: "['raɪtɪŋ]", ger: "Schrift", ctx: "-" },
+            { id: "1_82", eng: "trust", phon: "[trʌst]", ger: "vertrauen", ctx: "verb: (to) trust – noun: trust = Vertrauen" },
+            { id: "1_83", eng: "if", phon: "[ɪf]", ger: "wenn, falls", ctx: "what if ...? = was wäre, wenn?" },
+            { id: "1_84", eng: "writer", phon: "['raɪtə]", ger: "Autor/in, Verfasser/in", ctx: "-" },
+            { id: "1_85", eng: "danger", phon: "['deɪndʒə]", ger: "Gefahr", ctx: "there is no danger = it's not dangerous" },
+            { id: "1_86", eng: "(to) go around and around", phon: "-", ger: "sich (immer wieder) drehen", ctx: "-" },
+            { id: "1_87", eng: "head", phon: "[hed]", ger: "Kopf", ctx: "-" },
+            { id: "1_88", eng: "maybe", phon: "['meɪbi]", ger: "vielleicht", ctx: "Let me think - maybe this isn't a bad idea!" },
+            { id: "1_89", eng: "experiment", phon: "[ɪk'sperɪmənt]", ger: "Experiment", ctx: "In our science club we do great experiments." },
+            { id: "1_90", eng: "sand", phon: "[sænd]", ger: "Sand", ctx: "-" },
+            { id: "1_91", eng: "(to) prove", phon: "[pru:v]", ger: "nachweisen, beweisen", ctx: "-" },
+            { id: "1_92", eng: "wood", phon: "[wʊd]", ger: "Holz; Wald", ctx: "-" },
+            { id: "1_93", eng: "drop", phon: "[drɒp]", ger: "(sich) fallen lassen", ctx: "-" },
+            { id: "1_94", eng: "onto the rocks", phon: "['ɒntu, 'ɒntə]", ger: "auf die Felsen (hinauf)", ctx: "-" },
+            { id: "1_95", eng: "rock", phon: "[rɒk]", ger: "Felsen", ctx: "⚠️ German: Rock = skirt | English: rock = Felsen" },
+            { id: "1_96", eng: "presentation", phon: "[prezn'teɪʃn]", ger: "Referat, Präsentation", ctx: "(to) give a presentation = ein Referat halten" }
+        ];
+
+        const e6u2_data = [
+            { id: "2_1", eng: "waterfall", phon: "['wɔ:təfɔ:l]", ger: "Wasserfall", ctx: "-" },
+            { id: "2_2", eng: "mountain", phon: "['maʊntən]", ger: "Berg", ctx: "-" },
+            { id: "2_3", eng: "lake", phon: "[leɪk]", ger: "(Binnen-)See", ctx: "⚠️ Unterscheide: the sea = das Meer (die See) ◀▶ the lake = der See." },
+            { id: "2_4", eng: "coast", phon: "[kəʊst]", ger: "Küste", ctx: "Übergang von Land zu Meer." },
+            { id: "2_5", eng: "field", phon: "[fi:ld]", ger: "Feld; Weide", ctx: "⚠️ Präposition beachten: EN: 'the ponies in the field' ◀▶ DE: 'die Ponys auf der Weide'." },
+            { id: "2_6", eng: "grass", phon: "[ɡrɑ:s]", ger: "Gras; Rasen", ctx: "Bodenbewuchs." },
+            { id: "2_7", eng: "postcard", phon: "['pəʊstkɑ:d]", ger: "Postkarte", ctx: "Urlaubsgrüße." },
+            { id: "2_8", eng: "pony", phon: "['pəʊni]", ger: "Pony", ctx: "⚠️ Phonetischer Fehltritt-Schutz: ['pəʊni] klingt anders als im Deutschen!" },
+            { id: "2_9", eng: "farm", phon: "[fɑ:m]", ger: "Bauernhof, Farm", ctx: "-" },
+            { id: "2_10", eng: "moor", phon: "[mɔ:]", ger: "Heide(land); Moor", ctx: "Landschaftsform." },
+            { id: "2_11", eng: "hill", phon: "[hɪl]", ger: "Hügel", ctx: "Landschaftsform." },
+            { id: "2_12", eng: "forest", phon: "['fɒrɪst]", ger: "Wald", ctx: "Dichter Baumbewuchs." },
+            { id: "2_13", eng: "bridge", phon: "[brɪdʒ]", ger: "Brücke", ctx: "Überquerungshilfe für Flüsse." },
+            { id: "2_14", eng: "over", phon: "['əʊvə]", ger: "über, hinüber", ctx: "Richtungsangabe." },
+            { id: "2_15", eng: "river", phon: "['rɪvə]", ger: "Fluss", ctx: "Fließgewässer." },
+            { id: "2_16", eng: "(to) get (to)", phon: "-", ger: "gelangen, (hin)kommen (nach)", ctx: "-" },
+            { id: "2_17", eng: "(to) get, got", phon: "-", ger: "bekommen / holen / gelangen", ctx: "⚠️ Drei Bedeutungen: 1. bekommen (He got a job), 2. holen/besorgen (get some milk), 3. gelangen/kommen (get to the museum)." },
+            { id: "2_18", eng: "raft", phon: "[rɑ:ft]", ger: "Floß", ctx: "Wasserfahrzeug." },
+            { id: "2_19", eng: "wetsuit", phon: "['wetsu:t]", ger: "Taucheranzug, Neoprenanzug", ctx: "Wassersportbekleidung." },
+            { id: "2_20", eng: "swimming costume", phon: "['swɪmɪŋ kɒstju:m]", ger: "Badeanzug", ctx: "Für Damen." },
+            { id: "2_21", eng: "swimming trunks (pl)", phon: "['swɪmɪŋ trʌŋks]", ger: "Badehose", ctx: "-" },
+            { id: "2_22", eng: "towel", phon: "['taʊəl]", ger: "Handtuch", ctx: "Zum Abtrocknen." },
+            { id: "2_23", eng: "you'll (= you will) fall", phon: "[wɪl]", ger: "du wirst fallen", ctx: "⚠️ Grammatik: I will have fun = Ich werde Spaß haben. (Zukunft)" },
+            { id: "2_24", eng: "definitely", phon: "['defɪnətli]", ger: "auf jeden Fall; ganz bestimmt", ctx: "Adverb der Sicherheit." },
+            { id: "2_25", eng: "you won't need (= will not)", phon: "[wəʊnt]", ger: "du wirst ... nicht brauchen", ctx: "Verneintes Futur." },
+            { id: "2_26", eng: "(to) forget, forgot", phon: "[fə'ɡet], [fə'ɡɒt]", ger: "vergessen", ctx: "Gegenteil: forget ◀▶ remember. Beispielsatz: It's dad's birthday tomorrow. Don't forget it." },
+            { id: "2_27", eng: "(to) hike", phon: "[haɪk]", ger: "wandern", ctx: "Nomen: hiking = das Wandern. Hiking in the mountains is fun." },
+            { id: "2_28", eng: "boot", phon: "[bu:t]", ger: "Stiefel", ctx: "Schuhwerk." },
+            { id: "2_29", eng: "map", phon: "[mæp]", ger: "Landkarte, Stadtplan", ctx: "-" },
+            { id: "2_30", eng: "public", phon: "['pʌblɪk]", ger: "öffentlich", ctx: "Gegenteil: public ◀▶ private." },
+            { id: "2_31", eng: "private", phon: "['praɪvət]", ger: "privat; persönlich", ctx: "⚠️ Betonung auf der 1. Silbe: private." },
+            { id: "2_32", eng: "gate", phon: "[ɡeɪt]", ger: "Tor, Gatter", ctx: "-" },
+            { id: "2_33", eng: "tent", phon: "[tent]", ger: "Zelt", ctx: "Campingausrüstung." },
+            { id: "2_34", eng: "fire", phon: "['faɪə]", ger: "Feuer", ctx: "-" },
+            { id: "2_35", eng: "penknife, pl penknives", phon: "['pennaɪf], ['pennaɪvz]", ger: "Taschenmesser", ctx: "Unregelmäßiger Plural mit v." },
+            { id: "2_36", eng: "across a bridge", phon: "[ə'krɒs]", ger: "über eine Brücke", ctx: "Satz: Birds can fly across the sea." },
+            { id: "2_37", eng: "just", phon: "[dʒʌst]", ger: "nur, bloß; einfach", ctx: "Satz: Just listen to me for five minutes, please." },
+            { id: "2_38", eng: "beautiful", phon: "['bju:tɪfl]", ger: "wunderschön", ctx: "Satz: Your baby sister is a beautiful little girl." },
+            { id: "2_39", eng: "probably", phon: "['prɒbəbli]", ger: "wahrscheinlich", ctx: "Adverb." },
+            { id: "2_40", eng: "deer, pl deer", phon: "[dɪə]", ger: "Reh; Hirsch", ctx: "Numerus-Besonderheit: Singular & Plural identisch. red deer = Rotwild." },
+            { id: "2_41", eng: "fox", phon: "[fɒks]", ger: "Fuchs", ctx: "-" },
+            { id: "2_42", eng: "litter", phon: "['lɪtə]", ger: "Abfall", ctx: "Wendung: litter bin = Mülleimer." },
+            { id: "2_43", eng: "(to) feed, fed", phon: "[fi:d], [fed]", ger: "füttern; ernähren", ctx: "Satz: Can I feed the rabbits?" },
+            { id: "2_44", eng: "cave", phon: "[keɪv]", ger: "Höhle", ctx: "Felsformation." },
+            { id: "2_45", eng: "hat", phon: "[hæt]", ger: "Hut, Mütze", ctx: "Kopfbedeckung." },
+            { id: "2_46", eng: "glove", phon: "[ɡʌv]", ger: "Handschuh", ctx: "Wendung: a pair of gloves = ein Paar Handschuhe." },
+            { id: "2_47", eng: "torch", phon: "[tɔ:tʃ]", ger: "Taschenlampe", ctx: "-" },
+            { id: "2_48", eng: "wet", phon: "[wet]", ger: "nass", ctx: "Zustand." },
+            { id: "2_49", eng: "rule", phon: "[ru:l]", ger: "Regel", ctx: "Satz: Football is fun because its rules are so easy." },
+            { id: "2_50", eng: "sign", phon: "[saɪn]", ger: "Schild, Zeichen", ctx: "Wegweiser / Hinweisschild." },
+            { id: "2_51", eng: "road", phon: "[rəʊd]", ger: "Straße (Landstraße zwischen Orten)", ctx: "⚠️ Unterschied: 'in Hill Road' / 'in Park Street' nutzen die Präposition 'in'." },
+            { id: "2_52", eng: "equipment (no pl)", phon: "[ɪ'kwɪpmənt]", ger: "Ausrüstung", ctx: "⚠️ Nicht zählbar, kein Plural-s im Englischen!" },
+            { id: "2_53", eng: "(to) agree (with sb./sth.)", phon: "[ə'ɡri:]", ger: "jm. zustimmen; mit etwas einverstanden sein", ctx: "⚠️ Präpositionswechsel: DE: 'Ich stimme DIR zu' ◀▶ EN: 'I agree WITH you'." },
+            { id: "2_54", eng: "(to) look after", phon: "[lʊk 'ɑ:ftə]", ger: "sich kümmern um; aufpassen auf", ctx: "-" },
+            { id: "2_55", eng: "(to) look + Präposition", phon: "-", ger: "look after (aufpassen) / look at (ansehen) / look for (suchen)", ctx: "⚠️ Beispiele: look after my baby sister / look at my photos / looking for the post office." },
+            { id: "2_56", eng: "sure", phon: "[ʃʊə, ʃɔ:]", ger: "sicher (ohne Zweifel)", ctx: "⚠️ Kontrast: 'Be careful and you'll be safe' (nicht in Gefahr) ◀▶ 'I'm sure you'll be OK' (ohne Zweifel)." },
+            { id: "2_57", eng: "farmer", phon: "['fɑ:mə]", ger: "Bauer, Bäuerin; Landwirt/in", ctx: "Berufsbezeichnung." },
+            { id: "2_58", eng: "training", phon: "['treɪnɪŋ]", ger: "Training, Ausbildung, Dressur", ctx: "Substantiv." },
+            { id: "2_59", eng: "along the path", phon: "[ə'lɒŋ]", ger: "den Weg entlang", ctx: "⚠️ Präposition am Satzanfang: German: Geh die Straße entlang ◀▶ English: Go along the road." },
+            { id: "2_60", eng: "past (the wood)", phon: "[pɑ:st]", ger: "(am Wald) vorbei", ctx: "Ortsangabe." },
+            { id: "2_61", eng: "quite", phon: "[kwaɪt]", ger: "ziemlich, ganz", ctx: "Sätze: This text is quite long (ziemlich lang). Our new English teacher is quite nice (ganz nett)." },
+            { id: "2_62", eng: "report", phon: "[rɪ'pɔ:t]", ger: "Bericht, Referat", ctx: "noun: report – verb: (to) report (on) = berichten (über)." },
+            { id: "2_63", eng: "(to) charge (a mobile phone)", phon: "[tʃɑ:dʒ]", ger: "(ein Mobiltelefon) aufladen", ctx: "Technik-Wort." },
+            { id: "2_64", eng: "(to) lend, lent", phon: "[lend], [lent]", ger: "leihen, verleihen", ctx: "⚠️ Kontrast-Wiederholung: (to) lend sb. sth. = jm. etwas leihen ◀▶ (to) borrow sth. = sich von jm. etwas ausleihen." },
+            { id: "2_65", eng: "mine", phon: "[maɪn]", ger: "meine, meiner, meins", ctx: "Possessivpronomen: 'this is my bike = this bike is mine'." },
+            { id: "2_66", eng: "Possessivpronomen Tabelle", phon: "-", ger: "mine, yours, his, hers, ours, yours, theirs", ctx: "⚠️ Gesamte Tabelle: I->mine, you->yours, he->his, she->hers, we->ours, you->yours, they->theirs." },
+            { id: "2_67", eng: "mean, meant", phon: "[mi:n], [ment]", ger: "bedeuten; meinen (sagen wollen)", ctx: "Sätze: What does this word mean? What do you mean?" },
+            { id: "2_68", eng: "as a singer", phon: "[əz]", ger: "als Sänger/in", ctx: "Satz: As a dancer she was very good, but she couldn't sing." },
+            { id: "2_69", eng: "ghost", phon: "[ɡəʊst]", ger: "Geist, Gespenst", ctx: "Beispiel: a scary ghost." },
+            { id: "2_70", eng: "scary", phon: "['skeəri]", ger: "unheimlich, beängstigend, gruselig", ctx: "Adjektiv." },
+            { id: "2_71", eng: "strange", phon: "[streɪndʒ]", ger: "seltsam, sonderbar", ctx: "Adjektiv." },
+            { id: "2_72", eng: "monk", phon: "[mʌŋk]", ger: "Mönch", ctx: "-" },
+            { id: "2_73", eng: "many years ago", phon: "[ə'ɡəʊ]", ger: "vor vielen Jahren", ctx: "⚠️ Wortstellung beachten! German: VOR 20 Minuten ◀▶ English: 20 minutes AGO." },
+            { id: "2_74", eng: "heart", phon: "[hɑ:t]", ger: "Herz", ctx: "Anatomie / Metapher." },
+            { id: "2_75", eng: "(to) cry", phon: "[kraɪ]", ger: "weinen", ctx: "-" },
+            { id: "2_76", eng: "until", phon: "[ən'tɪl]", ger: "bis (zeitlich)", ctx: "Satz: We can play until 2 o'clock." },
+            { id: "2_77", eng: "not ... until", phon: "-", ger: "erst, wenn ...", ctx: "Satz: We won't eat until mum comes home (Wir essen erst, wenn Mama nach Hause kommt)." },
+            { id: "2_78", eng: "ferryman, pl ferrymen", phon: "['ferɪmən]", ger: "Fährmann", ctx: "Beruf (Plural wechselt zu -men)." },
+            { id: "2_79", eng: "voice", phon: "[vɔɪs]", ger: "Stimme", ctx: "Akustik." },
+            { id: "2_80", eng: "lady", phon: "['leɪdi]", ger: "Dame", ctx: "Anrede / Bezeichnung." },
+            { id: "2_81", eng: "brave", phon: "[breɪv]", ger: "mutig", ctx: "⚠️ Fehlübersetzungs-Schutz: brave = mutig (Molly was brave) ◀▶ brav = good (good dog!)." },
+            { id: "2_82", eng: "(to) laugh", phon: "[lɑ:f]", ger: "lachen", ctx: "Aktion." },
+            { id: "2_83", eng: "the next day / morning", phon: "[nekst]", ger: "am nächsten Tag / Morgen", ctx: "Zeitangabe." },
+            { id: "2_84", eng: "Zeitangaben Übersicht", phon: "-", ger: "last, this, next weekend / this evening / one day", ctx: "⚠️ Tabelle: last weekend (letztes), this weekend (dieses), next weekend (nächstes), this evening (heute Abend), one day (eines Tages)." },
+            { id: "2_85", eng: "crazy", phon: "['kreɪzi]", ger: "verrückt", ctx: "Satz: You want to go out in this weather? You must be crazy." },
+            { id: "2_86", eng: "figure", phon: "['fɪɡə]", ger: "Figur", ctx: "Nomen." },
+            { id: "2_87", eng: "hood", phon: "[hʊd]", ger: "Kapuze", ctx: "Kleidungsdetail." },
+            { id: "2_88", eng: "poor", phon: "[pɔ:, pʊə]", ger: "arm", ctx: "Gegenteil: poor ◀▶ rich." },
+            { id: "2_89", eng: "(to) be cold", phon: "[kəʊld]", ger: "frieren", ctx: "⚠️ Bedeutungsvielfalt: cold = 1. Kalt, 2. Kälte/Erkältung. (to) be cold = frieren, (to) have a cold = erkältet sein." },
+            { id: "2_90", eng: "ill", phon: "[ɪl]", ger: "krank", ctx: "Zustand." },
+            { id: "2_91", eng: "knock (at sth.)", phon: "[nɒk]", ger: "(an)klopfen (an etwas)", ctx: "Satz: I knocked and went into the room." },
+            { id: "2_92", eng: "turn to sth.", phon: "-", ger: "zu etwas werden", ctx: "⚠️ Phrasal-Verzeichnis: turn around (umdrehen), turn left/right (abbiegen), turn to sth. (zu etwas werden)." },
+            { id: "2_93", eng: "ice", phon: "[aɪs]", ger: "Eis (gefrorenes Wasser)", ctx: "⚠️ Kontrast: ice cream (Speiseeis) ◀▶ water turns to ice (gefrorenes Wasser)." },
+            { id: "2_94", eng: "leaflet", phon: "['li:flət]", ger: "Faltblatt, Informationsblatt", ctx: "-" },
+            { id: "2_95", eng: "frog", phon: "[frɒɡ]", ger: "Frosch", ctx: "-" },
+            { id: "2_96", eng: "contact", phon: "['kɒntækt]", ger: "Kontakt", ctx: "⚠️ Betonung auf der 1. Silbe: contact. noun: contact – verb: (to) contact sb. = Kontakt aufnehmen mit." },
+            { id: "2_97", eng: "pigeon", phon: "['pɪdʒɪn]", ger: "Taube", ctx: "-" }
+        ];
+
+        const e6u3_data = [
+            { id: "3_1", eng: "skyscraper", phon: "['skaɪskreɪpə]", ger: "Wolkenkratzer", ctx: "Skyline mit Hochhäusern." },
+            { id: "3_2", eng: "modern", phon: "['mɒdn]", ger: "modern", ctx: "⚠️ Betonung auf der 1. Silbe: modern" },
+            { id: "3_3", eng: "cathedral", phon: "[kə'θi:drəl]", ger: "Kathedrale, Dom", ctx: "Kirchengebäude." },
+            { id: "3_4", eng: "parliament", phon: "['pɑ:ləmənt]", ger: "Parlament", ctx: "⚠️ Das 'i' wird nicht gesprochen!" },
+            { id: "3_5", eng: "wheel", phon: "[wi:l]", ger: "Rad", ctx: "wheel = Rad | big wheel = Riesenrad" },
+            { id: "3_6", eng: "hairdresser's", phon: "['hedresəz]", ger: "Friseursalon", ctx: "⚠️ Für den Laden wird ein 's angehängt. hairdresser = Friseur/in. Jack is at the hairdresser's" },
+            { id: "3_7", eng: "bell", phon: "[bel]", ger: "Glocke", ctx: "Klangkörper." },
+            { id: "3_8", eng: "floor", phon: "[flɔ:]", ger: "Etage, Stock", ctx: "⚠️ floor = Fußboden / Etage. BE: first floor = 1. Etage | AE: first floor = Erdgeschoss" },
+            { id: "3_9", eng: "busy", phon: "['bɪzi]", ger: "hektisch, belebt", ctx: "It was too busy in the dining room, so we went upstairs." },
+            { id: "3_10", eng: "multicultural", phon: "[mʌlti'kʌltʃərəl]", ger: "multikulturell", ctx: "Kulturelle Vielfalt." },
+            { id: "3_11", eng: "capital (city)", phon: "['kæpɪtl]", ger: "Hauptstadt", ctx: "Regierungssitz." },
+            { id: "3_12", eng: "million", phon: "['mɪljən]", ger: "Million", ctx: "⚠️ Zahlwort: three million people (ohne s), aber: millions of people" },
+            { id: "3_13", eng: "nationality", phon: "[næʃə'næləti]", ger: "Nationalität", ctx: "⚠️ Betonung auf der 3. Silbe: nationality" },
+            { id: "3_14", eng: "Indian", phon: "['ɪndiən]", ger: "indisch", ctx: "Herkunft." },
+            { id: "3_15", eng: "Irish", phon: "['aɪrɪʃ]", ger: "irisch, aus Irland", ctx: "Herkunft." },
+            { id: "3_16", eng: "point", phon: "[pɔɪnt]", ger: "Punkt", ctx: "You get one point for every right answer. / two point three (= 2.3) million" },
+            { id: "3_17", eng: "thousand", phon: "['θaʊznd]", ger: "tausend", ctx: "Zahlwort." },
+            { id: "3_18", eng: "while", phon: "[waɪl]", ger: "während", ctx: "Satz: We met Mr Petrock while we were in Cornwall." },
+            { id: "3_19", eng: "so many", phon: "-", ger: "so viele", ctx: "⚠️ Bedeutung von so: 1. also, daher; 2. so" },
+            { id: "3_20", eng: "Russian", phon: "['rʌʃn]", ger: "russisch, Russisch; Russe / Russin", ctx: "Herkunft / Sprache." },
+            { id: "3_21", eng: "Iraqi", phon: "[ɪ'rɑ:ki]", ger: "irakisch", ctx: "Herkunft." },
+            { id: "3_22", eng: "Pakistani", phon: "[pækɪ'stɑ:ni]", ger: "pakistanisch", ctx: "Herkunft." },
+            { id: "3_23", eng: "Arabic", phon: "['ærəbɪk]", ger: "arabisch; Arabisch", ctx: "⚠️ Betonung auf der 1. Silbe: Arabic" },
+            { id: "3_24", eng: "Kurdish", phon: "['kɜ:dɪʃ]", ger: "Kurdisch", ctx: "Sprache / Kultur." },
+            { id: "3_25", eng: "(to) get on / get off", phon: "[get ɒn], [get ɒf]", ger: "einsteigen / aussteigen (in/aus einen Bus)", ctx: "⚠️ Gegenteile. Satz: Get off the bus at Green Road. I live in the white house." },
+            { id: "3_26", eng: "Romanian", phon: "[ru'meɪniən]", ger: "Rumäne / Rumänin; rumänisch, Rumänisch", ctx: "Herkunft / Sprache." },
+            { id: "3_27", eng: "over there", phon: "[əʊvə 'ðeə]", ger: "da drüben, dort drüben", ctx: "Gegenteil: over there ◀▶ over here" },
+            { id: "3_28", eng: "Lithuanian", phon: "[lɪθju'eɪniən]", ger: "Litauer/in; litauisch, Litauisch", ctx: "Herkunft / Sprache." },
+            { id: "3_29", eng: "anywhere else", phon: "[eniweə 'els]", ger: "irgewndo anders", ctx: "anywhere = irgendwo/überall(hin) | not ... anywhere = nirgends" },
+            { id: "3_30", eng: "artist", phon: "['ɑ:tɪst]", ger: "Künstler/in", ctx: "⚠️ Betonung auf der 1. Silbe: artist" },
+            { id: "3_31", eng: "amazing", phon: "[ə'meɪzɪŋ]", ger: "erstaunlich; großartig", ctx: "Synonym: great. 24 million people live in Shanghai? Amazing!" },
+            { id: "3_32", eng: "(to) miss", phon: "[mɪs]", ger: "vermissen", ctx: "Satz: I enjoyed my trip to France, but I missed my friends." },
+            { id: "3_33", eng: "Bangladeshi", phon: "[bæŋɡlə'deʃi]", ger: "Bangladescher/in; bangladeschisch", ctx: "Herkunft." },
+            { id: "3_34", eng: "Japanese", phon: "[dʒæpə'ni:z]", ger: "Japaner/in; japanisch, Japanisch", ctx: "⚠️ Betonung auf der 3. Silbe: Japanese" },
+            { id: "3_35", eng: "Egyptian", phon: "[i'dʒɪpʃn]", ger: "Ägypter/in; ägyptisch", ctx: "Herkunft." },
+            { id: "3_36", eng: "Thai", phon: "[taɪ]", ger: "Thailänder/in; thailändisch, Thailändisch", ctx: "Herkunft / Sprache." },
+            { id: "3_37", eng: "takeaway", phon: "['teɪkəweɪ]", ger: "Schnellrestaurant; Essen zum Mitnehmen", ctx: "Gastronomie." },
+            { id: "3_38", eng: "dancer", phon: "['dɑ:nsə]", ger: "Tänzer/in", ctx: "Breakdancerin." },
+            { id: "3_39", eng: "Romania", phon: "[ru'meɪniə]", ger: "Rumänien", ctx: "Land." },
+            { id: "3_40", eng: "Lithuania", phon: "[lɪθju'eɪniə]", ger: "Litauen", ctx: "Land." },
+            { id: "3_41", eng: "Egypt", phon: "['i:dʒɪpt]", ger: "Ägypten", ctx: "Land." },
+            { id: "3_42", eng: "underground", phon: "['ʌndəɡraʊnd]", ger: "U-Bahn", ctx: "Another name for the underground in London is 'the Tube'." },
+            { id: "3_43", eng: "the Tube", phon: "[tju:b]", ger: "(infml) die Londoner U-Bahn", ctx: "Synonym: the underground in London." },
+            { id: "3_44", eng: "far", phon: "[fɑ:]", ger: "weit (entfernt)", ctx: "Gegenteil: far ◀▶ near. Sätze: You want to go to Africa? But that's so far away! Steigerung: far - further - furthest" },
+            { id: "3_45", eng: "FAQ", phon: "[ef eɪ 'kju:]", ger: "häufig gestellte Fragen", ctx: "Abkürzung für: frequently asked questions" },
+            { id: "3_46", eng: "line", phon: "[laɪn]", ger: "U-Bahn-Linie", ctx: "Verkehrsnetz." },
+            { id: "3_47", eng: "kilometre (km)", phon: "['kɪləmi:tə]", ger: "Kilometer", ctx: "Maßeinheit. 1,000 metres = 1 kilometre" },
+            { id: "3_48", eng: "worst", phon: "[wɜ:st]", ger: "der/die/das schlechteste, schlimmste", ctx: "Gegenteil-Kette: bad - worse - worst ◀▶ good - better - best" },
+            { id: "3_49", eng: "off-peak", phon: "[ɒf 'pi:k]", ger: "außerhalb der Stoßzeiten", ctx: "Tarifzeit." },
+            { id: "3_50", eng: "bat", phon: "[bæt]", ger: "Fledermaus", ctx: "Tier." },
+            { id: "3_51", eng: "high", phon: "[haɪ]", ger: "hoch", ctx: "Steigerung: high - higher - highest" },
+            { id: "3_52", eng: "price", phon: "[praɪs]", ger: "(Kauf-)Preis", ctx: "⚠️ Verwechslungsgefahr: She won a prize (Gewinn). £150 is a good price for this bike." },
+            { id: "3_53", eng: "sight", phon: "[saɪt]", ger: "Sehenswürdigkeit", ctx: "Bedeutungen: 1. Anblick, Bild; 2. Sehenswürdigkeit." },
+            { id: "3_54", eng: "tall", phon: "[tɔ:l]", ger: "groß (Person); hoch (Gebäude)", ctx: "⚠️ Gegenteil: tall ◀▶ short (klein bei Personen). Wenn man einen Menschen 'big' nennt, meint man 'schwer' oder 'dick'" },
+            { id: "3_55", eng: "as good as", phon: "-", ger: "genauso gut wie", ctx: "Vergleich: as ... as = genauso ... wie | not as ... as = nicht so ... wie" },
+            { id: "3_56", eng: "(to) be right / wrong", phon: "-", ger: "Recht / Unrecht haben", ctx: "Satz: You're wrong - the party is tomorrow, not today!" },
+            { id: "3_57", eng: "escalator", phon: "['eskəleɪtə]", ger: "Rolltreppe", ctx: "You should stand on the right on British escalators." },
+            { id: "3_58", eng: "exit", phon: "['eksɪt]", ger: "Ausgang; Ausfahrt", ctx: "Infrastruktur." },
+            { id: "3_59", eng: "platform", phon: "['plætfɔ:m]", ger: "Bahnsteig", ctx: "⚠️ Präpositionsunterschied: EN: 'arrive AT platform 4' ◀▶ DE: 'auf Gleis 4 einfahren'" },
+            { id: "3_60", eng: "passenger", phon: "['pæsɪndʒə]", ger: "Passagier/in, Fahrgast", ctx: "Reisende." },
+            { id: "3_61", eng: "ticket gate", phon: "['tɪkɪt ɡeɪt]", ger: "Sperre (zur Fahrkartenkontrolle)", ctx: "U-Bahn-Zugang." },
+            { id: "3_62", eng: "machine", phon: "[mə'ʃi:n]", ger: "Automat, Maschine", ctx: "Gerät." },
+            { id: "3_63", eng: "(to) mind", phon: "[maɪnd]", ger: "beachten, achten auf", ctx: "Wendung: Mind the gap! - Achten Sie auf den Abstand! (zwischen Zug und Bahnsteig)" },
+            { id: "3_64", eng: "(to) change", phon: "[tʃeɪndʒ]", ger: "umsteigen", ctx: "Sätze: Where do I have to change (trains)? Change at Notting Hill Gate for the Central Line." },
+            { id: "3_65", eng: "for example", phon: "[fər ɪɡ'zɑ:mpl]", ger: "zum Beispiel", ctx: "I like ball games - basketball, for example." },
+            { id: "3_66", eng: "eastbound", phon: "['i:stbaʊnd]", ger: "in Richtung Osten (Zug, Bus)", ctx: "Satz: Take an eastbound train from here. Kompassrose zeigt: northbound, eastbound, southbound, westbound." },
+            { id: "3_67", eng: "direction", phon: "[də'rekʃn]", ger: "Richtung", ctx: "direction = Richtung | directions (pl) = Wegbeschreibung." },
+            { id: "3_68", eng: "zone", phon: "[zəʊn]", ger: "Zone", ctx: "Bereichseinteilung." },
+            { id: "3_69", eng: "department store", phon: "[dɪ'pɑ:tmənt stɔ:]", ger: "Kaufhaus", ctx: "-" },
+            { id: "3_70", eng: "too expensive", phon: "[tu:]", ger: "zu teuer", ctx: "Satz: It was too busy in the dining room, so we went upstairs." },
+            { id: "3_71", eng: "(to) afford", phon: "[ə'fɔ:d]", ger: "sich etwas leisten können", ctx: "Wendung: (to) afford sth. / to do sth." },
+            { id: "3_72", eng: "carnival", phon: "['kɑ:nɪvl]", ger: "Karneval", ctx: "Festlichkeit." },
+            { id: "3_73", eng: "costume", phon: "['kɒstju:m]", ger: "Kostüm, Verkleidung", ctx: "Satz: This is my carnival costume: I'm a pirate!" },
+            { id: "3_74", eng: "usual", phon: "['ju:ʒuəl]", ger: "üblich, gewöhnlich", ctx: "Adjektiv." },
+            { id: "3_75", eng: "have a good time", phon: "-", ger: "Spaß haben, sich vergnügen", ctx: "Satz: We're going to a party. - Have a good time!" },
+            { id: "3_76", eng: "(to) enjoy", phon: "[ɪn'dʒɔɪ]", ger: "genießen", ctx: "Wendung: (to) enjoy doing sth. = genießen, etwas zu tun." },
+            { id: "3_77", eng: "I don't mind ...", phon: "[maɪnd]", ger: "Es macht mir nichts aus ...", ctx: "Satz: I don't mind helping you (Ich helfe dir gern)." },
+            { id: "3_78", eng: "play", phon: "[pleɪ]", ger: "Schauspiel, Theaterstück", ctx: "⚠️ Nomen: play = Schauspiel. Verb: (to) play = spielen. Unterschied: Spiel (Sport/Gesellschaft) = game | Wettkampf = match." },
+            { id: "3_79", eng: "lion", phon: "['laɪən]", ger: "Löwe", ctx: "Wendung: The Lion King = König der Löwen." },
+            { id: "3_80", eng: "(to) decide", phon: "[dɪ'saɪd]", ger: "beschließen, sich entscheiden", ctx: "Wendung: (to) decide to do sth." },
+            { id: "3_81", eng: "Grammatik: Infinitiv vs. -ing", phon: "-", ger: "Verwendung mit Infinitiv oder -ing-Form", ctx: "⚠️ Infinitiv: decide / want / try / plan / afford / love TO DO sth. | -ing-Form: enjoy / miss / love / don't mind DOING sth." },
+            { id: "3_82", eng: "remember to do / doing", phon: "-", ger: "daran denken / sich erinnern", ctx: "⚠️ Bedeutungswechsel: remember to do sth. = daran denken, etwas zu tun | remember doing sth. = sich erinnern, etwas getan zu haben." },
+            { id: "3_83", eng: "part (of)", phon: "[pɑ:t]", ger: "Teil (von)", ctx: "-" },
+            { id: "3_84", eng: "drug", phon: "[drʌɡ]", ger: "Droge, Rauschgift", ctx: "-" },
+            { id: "3_85", eng: "homeless", phon: "['həʊmləs]", ger: "obdachlos", ctx: "Zustand." },
+            { id: "3_86", eng: "without", phon: "[wɪ'ðaʊt]", ger: "ohne", ctx: "Gegenteil: with ◀▶ without" },
+            { id: "3_87", eng: "hopeless", phon: "['həʊpləs]", ger: "hoffnungslos", ctx: "Adjektiv." },
+            { id: "3_88", eng: "still", phon: "[stɪl]", ger: "(immer) noch; trotzdem", ctx: "Sätze: It's 4.30 and Joe still isn't here (noch). It's cold, but I'll still walk to school (trotzdem)." },
+            { id: "3_89", eng: "vet", phon: "[vet]", ger: "Tierarzt / -ärztin", ctx: "Beruf." },
+            { id: "3_90", eng: "bus stop", phon: "['bʌs stɒp]", ger: "Bushaltestelle", ctx: "stop = Halt, Haltepunkt." },
+            { id: "3_91", eng: "shoulder", phon: "['ʃəʊldə]", ger: "Schulter", ctx: "Körperteil." },
+            { id: "3_92", eng: "reason", phon: "['ri:zn]", ger: "Grund, Begründung", ctx: "Wendung: for this reason = aus diesem Grund." },
+            { id: "3_93", eng: "jobless", phon: "['dʒɒbləs]", ger: "arbeitslos", ctx: "Zustand." },
+            { id: "3_94", eng: "newspaper", phon: "['nju:zpeɪpə]", ger: "(Tages-)Zeitung", ctx: "Printmedium." }
+        ];
+
+        const e6u4_data = [
+            { id: "4_1", eng: "Scotland", phon: "['skɒtlənd]", ger: "Schottland", ctx: "Landesbezeichnung." },
+            { id: "4_2", eng: "porridge", phon: "['pɒrɪdʒ]", ger: "Haferbrei", ctx: "Traditionelles Frühstücksgericht." },
+            { id: "4_3", eng: "bagpipes (pl)", phon: "['bæɡpaɪps]", ger: "Dudelsack", ctx: "⚠️ Mit bestimmtem Artikel: He's playing the bagpipes = Er spielt Dudelsack." },
+            { id: "4_4", eng: "haggis", phon: "['hæɡɪs]", ger: "schottisches Gericht aus gefülltem Schafsmagen", ctx: "Kulinarische Spezialität." },
+            { id: "4_5", eng: "island", phon: "['aɪlənd]", ger: "Insel", ctx: "Das 's' ist stumm." },
+            { id: "4_6", eng: "top", phon: "[tɒp]", ger: "Spitze, das obere Ende", ctx: "⚠️ Gegenteil: top ◀▶ bottom. Satz: There's a pony at the top of the hill, and there are many deer at the bottom." },
+            { id: "4_7", eng: "Scottish", phon: "['skɒtɪʃ]", ger: "schottisch, aus Schottland", ctx: "Herkunftsbezeichnung." },
+            { id: "4_8", eng: "loch", phon: "[lɒx]", ger: "schottisches Wort für „lake“", ctx: "Wird genauso ausgesprochen wie das deutsche Wort „Loch“." },
+            { id: "4_9", eng: "traditional", phon: "[trə'dɪʃənl]", ger: "traditionell", ctx: "⚠️ Betonung auf der 2. Silbe: traditional" },
+            { id: "4_10", eng: "the Highlands (pl)", phon: "['haɪləndz]", ger: "das schottische Hochland (der bergige Norden Schottlands)", ctx: "Region." },
+            { id: "4_11", eng: "(to) cook", phon: "[kʊk]", ger: "kochen, (Essen) zubereiten", ctx: "noun: cook = Koch/Köchin | verb: (to) cook = kochen." },
+            { id: "4_12", eng: "business", phon: "['bɪznəs]", ger: "Geschäft, Betrieb", ctx: "Wirtschaftsberiff." },
+            { id: "4_13", eng: "businessman / -woman", phon: "['bɪznəsmæn]", ger: "Geschäftsmann / Geschäftsfrau", ctx: "Plural: businessmen / businesswomen." },
+            { id: "4_14", eng: "(to) fry", phon: "[fraɪ]", ger: "frittieren, braten", ctx: "Adjektiv: fried = frittiert, gebraten." },
+            { id: "4_15", eng: "oil", phon: "[ɔɪl]", ger: "Öl", ctx: "Satz: Oh no, look, now there's oil everywhere." },
+            { id: "4_16", eng: "everywhere", phon: "['evriweə]", ger: "überall", ctx: "Ortsangabe." },
+            { id: "4_17", eng: "home-made", phon: "[həʊm'meɪd]", ger: "hausgemacht, selbstgemacht", ctx: "Satz: Taste these home-made burgers!" },
+            { id: "4_18", eng: "(to) taste", phon: "[teɪst]", ger: "schmecken; kosten (probieren)", ctx: "Satz: They taste wonderful (schmecken) / Taste these! (probieren)" },
+            { id: "4_19", eng: "healthy", phon: "['helθi]", ger: "gesund", ctx: "noun: health = Gesundheit | adjective: healthy. Stay fit and healthy!" },
+            { id: "4_20", eng: "busy", phon: "['bɪzi]", ger: "(viel)beschäftigt", ctx: "⚠️ Bedeutungsvielfalt: 1. Hektisch/belebt; 2. Vielbeschäftigt. I'm busy! / The kitchen is too busy." },
+            { id: "4_21", eng: "Mexican", phon: "['meksɪkən]", ger: "mexikanisch; Mexikaner/in", ctx: "⚠️ Betonung auf der 1. Silbe: Mexican" },
+            { id: "4_22", eng: "pepper", phon: "['pepə]", ger: "Paprika, Peperoni; Pfeffer", ctx: "Rote Paprika." },
+            { id: "4_23", eng: "pea", phon: "[pi:]", ger: "Erbse", ctx: "Plural: peas." },
+            { id: "4_24", eng: "carrot", phon: "['kærət]", ger: "Möhre, Karotte", ctx: "Plural: carrots." },
+            { id: "4_25", eng: "beef", phon: "[bi:f]", ger: "Rindfleisch", ctx: "Fleischsorte." },
+            { id: "4_26", eng: "sausage", phon: "['sɒsɪdʒ]", ger: "(Brat-, Bock-)Würstchen, Wurst", ctx: "Fleischprodukt." },
+            { id: "4_27", eng: "simple", phon: "['sɪmpl]", ger: "einfach", ctx: "Synonym: easy." },
+            { id: "4_28", eng: "tasty", phon: "['teɪsti]", ger: "schmackhaft, lecker", ctx: "noun: taste = Geschmack | adjective: tasty." },
+            { id: "4_29", eng: "spice", phon: "[spaɪs]", ger: "Gewürz", ctx: "Zutat." },
+            { id: "4_30", eng: "garlic", phon: "['ɡɑ:lɪk]", ger: "Knoblauch", ctx: "Knoblauchzehe." },
+            { id: "4_31", eng: "soup", phon: "[su:p]", ger: "Suppe", ctx: "Vorspeise / Gericht." },
+            { id: "4_32", eng: "main course", phon: "[meɪn 'kɔ:s]", ger: "Hauptgericht", ctx: "Menübestandteil." },
+            { id: "4_33", eng: "side dish", phon: "['saɪd dɪʃ]", ger: "Beilage", ctx: "⚠️ Vorsicht: dish = Gericht | dishes (pl) = Abwasch." },
+            { id: "4_34", eng: "lemonade", phon: "[lemə'neɪd]", ger: "Limonade", ctx: "Getränk." },
+            { id: "4_35", eng: "(to) make (money)", phon: "-", ger: "(Geld) verdienen", ctx: "Satz: He made a lot of money by selling computers." },
+            { id: "4_36", eng: "not (...) anything", phon: "['eniθɪŋ]", ger: "nichts", ctx: "Satz: Without money you can't do anything." },
+            { id: "4_37", eng: "recipe", phon: "['resəpi]", ger: "(Koch-)Rezept", ctx: "Anleitung." },
+            { id: "4_38", eng: "pan", phon: "[pæn]", ger: "Pfanne", ctx: "Kochgeschirr." },
+            { id: "4_39", eng: "fridge", phon: "[frɪdʒ]", ger: "Kühlschrank", ctx: "Satz: There are two apples and two bottles of milk in the fridge." },
+            { id: "4_40", eng: "(to) disagree", phon: "[dɪsə'ɡri:]", ger: "nicht zustimmen, widersprechen", ctx: "Gegenteil: (to) agree ◀▶ (to) disagree" },
+            { id: "4_41", eng: "opinion", phon: "[ə'pɪnjən]", ger: "Meinung", ctx: "⚠️ Feste Wendung: 'in my opinion' = meiner Meinung nach." },
+            { id: "4_42", eng: "sugar", phon: "['ʃʊɡə]", ger: "Zucker", ctx: "Zuckerwürfel." },
+            { id: "4_43", eng: "salt", phon: "[sɔ:lt]", ger: "Salz", ctx: "Salzstreuer." },
+            { id: "4_44", eng: "boiled", phon: "[bɔɪld]", ger: "gekocht", ctx: "Zubereitungsart." },
+            { id: "4_45", eng: "raw", phon: "[rɔ:]", ger: "roh", ctx: "Gegenteil: raw ◀▶ boiled." },
+            { id: "4_46", eng: "roasted", phon: "['rəʊstɪd]", ger: "gebraten, geröstet", ctx: "⚠️ Satz: You can eat your meat boiled or roasted. Aber: 'roast meat' = Braten." },
+            { id: "4_47", eng: "oven", phon: "['ʌvn]", ger: "Backofen", ctx: "Küchengerät." },
+            { id: "4_48", eng: "true", phon: "[tru:]", ger: "wahr, richtig", ctx: "Synonym: right." },
+            { id: "4_49", eng: "(to) worry (about)", phon: "['wʌri]", ger: "sich Sorgen machen (wegen, um)", ctx: "Satz: Mum always worries about me when I come home late." },
+            { id: "4_50", eng: "(to) believe (in sth.)", phon: "[bɪ'li:v]", ger: "(an etwas) glauben", ctx: "⚠️ Präpositionsunterschied: DE: 'Glaubst du AN Geister?' ◀▶ EN: 'Do you believe IN ghosts?'" },
+            { id: "4_51", eng: "in my view", phon: "[vju:]", ger: "meiner Ansicht nach", ctx: "Synonym: in my opinion." },
+            { id: "4_52", eng: "Bavaria", phon: "[bə'veəriə]", ger: "Bayern", ctx: "Bundesland." },
+            { id: "4_53", eng: "shopping list", phon: "['ʃɒpɪŋ lɪst]", ger: "Einkaufsliste", ctx: "-" },
+            { id: "4_54", eng: "anything", phon: "['eniθɪŋ]", ger: "irgendetwas / nichts", ctx: "⚠️ 1. In Fragen: (irgend)etwas (Do you know anything about dogs?). 2. In verneinten Sätzen: nichts (We don't know anything)." },
+            { id: "4_55", eng: "somebody / someone", phon: "['sʌmbədi]", ger: "jemand", ctx: "Satz: There's somebody/someone at the door. Systematik: somebody/someone (jemand), everybody/everyone (jeder), nobody/no one (niemand)." },
+            { id: "4_56", eng: "anybody / anyone", phon: "['enibɒdi]", ger: "irgendjemand; jede/r (beliebige)", ctx: "⚠️ Kombinationen: not ... anybody = niemand | not ... anywhere = nirgends | not ... anything = nichts." },
+            { id: "4_57", eng: "somewhere", phon: "['sʌmweə]", ger: "irgendwo(hin)", ctx: "Satz: Can we go somewhere where it's hot this summer?" },
+            { id: "4_58", eng: "seconds (pl)", phon: "['sekəndz]", ger: "Nachschlag", ctx: "Beim Essen." },
+            { id: "4_59", eng: "charity", phon: "['tʃærəti]", ger: "wohltätige Organisation", ctx: "Institution." },
+            { id: "4_60", eng: "(to) cost, cost", phon: "[kɒst]", ger: "kosten", ctx: "Satz: How much did your new computer cost?" },
+            { id: "4_61", eng: "surprised", phon: "[sə'praɪzd]", ger: "überrascht", ctx: "Satz: Only £200! I was really surprised." },
+            { id: "4_62", eng: "(to) miss", phon: "[mɪs]", ger: "auslassen; verpassen", ctx: "⚠️ Drei Bedeutungen gelernt: 1. vermissen; 2. auslassen; 3. verpassen (I'll miss the bus)." },
+            { id: "4_63", eng: "(to) explain sth. to sb.", phon: "[ɪk'spleɪn]", ger: "jm. etwas erklären", ctx: "⚠️ Präpositionswechsel: DE: 'Erkläre es MIR bitte' ◀▶ EN: 'Please explain it TO me'." },
+            { id: "4_64", eng: "umbrella", phon: "[ʌm'brelə]", ger: "(Regen-)Schirm", ctx: "Nutzt unbestimmten Artikel 'an': an umbrella." },
+            { id: "4_65", eng: "(to) do the cleaning", phon: "[du: ðə 'kli:nɪŋ]", ger: "putzen", ctx: "Systematik: do the cleaning (putzen), do the washing (waschen), do the cooking (kochen), do the shopping (einkaufen)." },
+            { id: "4_66", eng: "(to) empty", phon: "['empti]", ger: "leeren", ctx: "verb: (to) empty | adjective: empty = leer. She's emptying the dishwasher." },
+            { id: "4_67", eng: "dishwasher", phon: "['dɪʃwɒʃə]", ger: "Geschirrspülmaschine", ctx: "Küchengerät." },
+            { id: "4_68", eng: "(to) load", phon: "[ləʊd]", ger: "(be)laden", ctx: "Satz: He's loading the dishwasher." },
+            { id: "4_69", eng: "washing", phon: "['wɒʃɪŋ]", ger: "Wäsche", ctx: "Zustand." },
+            { id: "4_70", eng: "(to) hang, hung", phon: "[hæŋ], [hʌŋ]", ger: "hängen", ctx: "Satz: He's hanging out the washing." },
+            { id: "4_71", eng: "puzzled", phon: "['pʌzld]", ger: "verwundert", ctx: "Synonym: surprised." },
+            { id: "4_72", eng: "(to) need to do sth.", phon: "-", ger: "etwas tun müssen", ctx: "Synonym: must do sth." },
+            { id: "4_73", eng: "(to) call", phon: "[kɔ:l]", ger: "nennen; rufen; anrufen", ctx: "⚠️ Drei Bedeutungen: 1. nennen (call her Jess), 2. rufen (Please call your dog), 3. anrufen (Call me tomorrow)." },
+            { id: "4_74", eng: "embarrassed", phon: "[ɪm'bærəst]", ger: "verlegen", ctx: "Satz: I felt so embarrassed when my mobile rang." },
+            { id: "4_75", eng: "engineer", phon: "[endʒɪ'nɪə]", ger: "Ingenieur/in; Techniker/in", ctx: "Berufsbezeichnung." },
+            { id: "4_76", eng: "oil rig", phon: "['ɔɪl rɪɡ]", ger: "Ölbohrinsel", ctx: "Ölbohrinsel auf offener See: an oil rig." },
+            { id: "4_77", eng: "since", phon: "[sɪns]", ger: "seit", ctx: "Zeitliche Angabe." },
+            { id: "4_78", eng: "(to) pay (for sth.), paid", phon: "[peɪ], [peɪd]", ger: "etwas (be)zahlen", ctx: "⚠️ Präpositionswechsel: EN: 'pay FOR the pizzas' ◀▶ DE: 'die Pizzas bezahlen'." },
+            { id: "4_79", eng: "(to) worry sb.", phon: "['wʌri]", ger: "jn. beunruhigen", ctx: "⚠️ Unterschied zu worry about: I don't want to worry you (nicht beunruhigen). Don't worry! (Mach dir keine Sorgen)." },
+            { id: "4_80", eng: "herself", phon: "[hɜ:'self]", ger: "sich (selbst)", ctx: "Reflexivpronomen (Singular)." },
+            { id: "4_81", eng: "Reflexivpronomen Übersicht", phon: "-", ger: "myself, yourself, himself, herself, itself, ourselves, yourselves, themselves", ctx: "⚠️ Tabelle: I->myself, you->yourself, he->himself, she->herself, it->itself | Plural: we->ourselves, you->yourselves, they->themselves. Endung -self [-'self] vs -selves [-'selvz]" },
+            { id: "4_82", eng: "volunteer organisation", phon: "[vɒləntɪər ɔ:ɡənaɪ'zeɪʃn]", ger: "Freiwilligenorganisation", ctx: "⚠️ Betonung auf der 4. Silbe: organisation" },
+            { id: "4_83", eng: "feeling", phon: "['fi:lɪŋ]", ger: "Gefühl", ctx: "verb: (to) feel = fühlen | noun: feeling." },
+            { id: "4_84", eng: "buffet", phon: "['bʊfeɪ]", ger: "Büfett", ctx: "⚠️ Betonung auf der 1. Silbe: buffet" },
+            { id: "4_85", eng: "meatball", phon: "['mi:tbɔ:l]", ger: "Fleischbällchen, Frikadelle", ctx: "Speise." },
+            { id: "4_86", eng: "beetroot", phon: "['bi:tru:t]", ger: "Rote Beete", ctx: "Gemüsesorte." },
+            { id: "4_87", eng: "sour cream", phon: "['saʊə kri:m]", ger: "saure Sahne", ctx: "Bestandteile: cream = Sahne/Creme | sour = sauer." }
+        ];
+
+        const e6u5_data = [
+            { id: "5_1", eng: "Canada", phon: "['kænədə]", ger: "Kanada", ctx: "Landesbezeichnung." },
+            { id: "5_2", eng: "Pacific Ocean", phon: "[pəsɪfɪk 'əʊʃn]", ger: "Pazifischer Ozean, Pazifik", ctx: "Gewässer." },
+            { id: "5_3", eng: "Atlantic Ocean", phon: "[ətlæntɪk 'əʊʃn]", ger: "atlantischer Ozean, Atlantik", ctx: "Gewässer." },
+            { id: "5_4", eng: "north", phon: "[nɔ:θ]", ger: "Norden; nördlich; Nord-", ctx: "Kompassrose zeigt auch: north-west, west, south-west, south, south-east, east, north-east" },
+            { id: "5_5", eng: "state", phon: "[steɪt]", ger: "(Bundes-)Staat", ctx: "Politische Gliederung." },
+            { id: "5_6", eng: "California", phon: "[kælə'fɔ:niə]", ger: "Kalifornien", ctx: "US-Bundesstaat." },
+            { id: "5_7", eng: "highway (AE)", phon: "['haɪweɪ]", ger: "Fernstraße (in den USA; oft mit vier oder mehr Spuren)", ctx: "Wüstenstraße: a highway." },
+            { id: "5_8", eng: "national park", phon: "[næʃnəl 'pɑ:k]", ger: "Nationalpark (staatliches Naturschutzgebiet)", ctx: "Natur." },
+            { id: "5_9", eng: "American", phon: "[ə'merɪkən]", ger: "Amerikaner/in; amerikanisch", ctx: "Herkunft." },
+            { id: "5_10", eng: "car park", phon: "['kɑ: pɑ:k]", ger: "Parkplatz", ctx: "Britische Bezeichnung." },
+            { id: "5_11", eng: "petrol station", phon: "['petrəl steɪʃn]", ger: "Tankstelle", ctx: "BE: petrol = Benzin." },
+            { id: "5_12", eng: "airport", phon: "['eəpɔ:t]", ger: "Flughafen", ctx: "Infrastruktur." },
+            { id: "5_13", eng: "cab (AE)", phon: "[kæb]", ger: "Taxi", ctx: "⚠️ AE: cab ◀▶ BE: taxi. Gelbes Auto: a cab." },
+            { id: "5_14", eng: "parking lot (AE)", phon: "['pɑ:kɪŋ lɒt]", ger: "Parkplatz", ctx: "⚠️ AE: parking lot ◀▶ BE: car park." },
+            { id: "5_15", eng: "gas station (AE)", phon: "['ɡæs steɪʃn]", ger: "Tankstelle", ctx: "⚠️ AE: gas station ◀▶ BE: petrol station (AE: gas = Benzin)." },
+            { id: "5_16", eng: "candy (AE)", phon: "['kændi]", ger: "Süßigkeit(en), Bonbon", ctx: "⚠️ AE: candy ◀▶ BE: sweets." },
+            { id: "5_17", eng: "vacation (AE)", phon: "[və'keɪʃn]", ger: "Urlaub, Ferien", ctx: "⚠️ AE: vacation ◀▶ BE: holidays." },
+            { id: "5_18", eng: "movie (AE)", phon: "['mu:vi]", ger: "Film, Spielfilm", ctx: "⚠️ AE: movie ◀▶ BE: film." },
+            { id: "5_19", eng: "earthquake", phon: "['ɜ:θkweɪk]", ger: "Erdbeben", ctx: "Naturkatastrophe." },
+            { id: "5_20", eng: "letter", phon: "['letə]", ger: "Buchstabe", ctx: "⚠️ Doppelbedeutung: 1. Brief; 2. Buchstabe." },
+            { id: "5_21", eng: "actor", phon: "['æktə]", ger: "Schauspieler/in", ctx: "Beruf." },
+            { id: "5_22", eng: "director", phon: "[də'rektə]", ger: "Regisseur/in", ctx: "Beruf." },
+            { id: "5_23", eng: "photographer", phon: "[fə'tɒɡrəfə]", ger: "Fotograf/in", ctx: "⚠️ Betonung auf der 2. Silbe: photographer" },
+            { id: "5_24", eng: "doctor", phon: "['dɒktə]", ger: "Arzt, Ärztin", ctx: "⚠️ Bei Ortsangaben Genitiv-s: DE: 'beim Arzt / zum Arzt' ◀▶ EN: 'at the doctor's / to the doctor's'." },
+            { id: "5_25", eng: "dentist", phon: "['dentɪst]", ger: "Zahnarzt / -ärztin", ctx: "⚠️ Genitiv-s bei Ortsangaben: at the dentist's / to the dentist's." },
+            { id: "5_26", eng: "Walk of Fame", phon: "[wɔ:k əv 'feɪm]", ger: "„Weg des Ruhms“ – Gehweg in Los Angeles", ctx: "Sterne für Berühmtheiten im Boden. fame = Ruhm." },
+            { id: "5_27", eng: "sidewalk (AE)", phon: "['saɪdwɔ:k]", ger: "Bürgersteig", ctx: "Gehweg." },
+            { id: "5_28", eng: "movie theater (AE)", phon: "['mu:vi θɪətə]", ger: "Kino", ctx: "⚠️ AE: movie theater ◀▶ BE: cinema." },
+            { id: "5_29", eng: "Spelling: BE vs. AE", phon: "-", ger: "Unterschiedliche Schreibweisen", ctx: "⚠️ BE -tre / AE -ter (theatre/theater) & BE -our / AE -or (colour/color)." },
+            { id: "5_30", eng: "walk around", phon: "-", ger: "umhergehen", ctx: "Let’s walk around the village = im Dorf umhergehen." },
+            { id: "5_31", eng: "pavement", phon: "['peɪvmənt]", ger: "Gehweg, Bürgersteig", ctx: "⚠️ BE: pavement ◀▶ AE: sidewalk." },
+            { id: "5_32", eng: "(to) clean", phon: "[kli:n]", ger: "sauber machen, putzen", ctx: "verb: (to) clean | adjective: clean = sauber." },
+            { id: "5_33", eng: "nothing", phon: "['nʌθɪŋ]", ger: "nichts", ctx: "Synonym: not anything | Gegenteil: nothing ◀▶ something." },
+            { id: "5_34", eng: "just", phon: "[dʒʌst]", ger: "gerade (eben)", ctx: "Satz: I'm new in New York. I've just moved here." },
+            { id: "5_35", eng: "recently", phon: "['ri:sntli]", ger: "in letzter Zeit, neulich", ctx: "Satz: I've started doing more sport recently." },
+            { id: "5_36", eng: "wedding", phon: "['wedɪŋ]", ger: "Hochzeit", ctx: "Wendung: wedding present = Hochzeitsgeschenk." },
+            { id: "5_37", eng: "(to) wash", phon: "[wɒʃ]", ger: "(sich) waschen", ctx: "Körperpflege / Reinigung." },
+            { id: "5_38", eng: "(to) board", phon: "[bɔ:d]", ger: "an Bord gehen", ctx: "⚠️ Satz: flight 934 boarding at gate B12. boarding card = Bordkarte." },
+            { id: "5_39", eng: "flight", phon: "[flaɪt]", ger: "Flug", ctx: "Flugreise." },
+            { id: "5_40", eng: "baggage (AE)", phon: "['bæɡɪdʒ]", ger: "Gepäck", ctx: "⚠️ AE: baggage ◀▶ BE: luggage ['lʌɡɪdʒ]" },
+            { id: "5_41", eng: "passport", phon: "['pɑ:spɔ:t]", ger: "(Reise-)Pass", ctx: "Reisedokumente." },
+            { id: "5_42", eng: "arrival", phon: "[ə'raɪvl]", ger: "Ankunft", ctx: "Flughafenbegriff." },
+            { id: "5_43", eng: "delayed", phon: "[dɪ'leɪd]", ger: "verspätet", ctx: "⚠️ Präpositionen: delayed TO 15.20 (bis) / BY 30 minutes (um)." },
+            { id: "5_44", eng: "zoo", phon: "[zu:]", ger: "Zoo", ctx: "Tierpark." },
+            { id: "5_45", eng: "ring", phon: "[rɪŋ]", ger: "Ring", ctx: "-" },
+            { id: "5_46", eng: "yet", phon: "[jet]", ger: "schon ...? / noch nicht", ctx: "⚠️ Grammatik: 1. In verneinten Sätzen: noch nicht (I haven't had dinner yet). 2. In Fragen: schon (Have you had dinner yet?)" },
+            { id: "5_47", eng: "already", phon: "[ɔ:l'redi]", ger: "schon", ctx: "Satz: I've already had dinner." },
+            { id: "5_48", eng: "list", phon: "[lɪst]", ger: "Liste", ctx: "Wendung: to-do list = Aufgabenliste." },
+            { id: "5_49", eng: "take off, took, taken", phon: "[teɪk ɒf]", ger: "ausziehen, ablegen", ctx: "Kleidung ablegen. Where are my sunglasses? I must have taken them off somewhere." },
+            { id: "5_50", eng: "sunglasses (pl)", phon: "['sʌnɡlɑ:sɪz]", ger: "(eine) Sonnenbrille", ctx: "⚠️ Pluraletantum: sunglasses, glasses, swimming trunks, trousers, shorts, bagpipes, vegetables." },
+            { id: "5_51", eng: "ever", phon: "['evə]", ger: "jemals, schon einmal", ctx: "Gegenteil: ever ◀▶ never. Have you ever ...? = Bist/Hast du schon einmal ...?" },
+            { id: "5_52", eng: "bear", phon: "[beə]", ger: "Bär", ctx: "Braunbär." },
+            { id: "5_53", eng: "whale", phon: "[weɪl]", ger: "Wal", ctx: "Meeressäuger." },
+            { id: "5_54", eng: "inside", phon: "[ɪn'saɪd]", ger: "innen, auf der Innenseite", ctx: "Gegenteil: inside ◀▶ outside." },
+            { id: "5_55", eng: "heavy", phon: "['hevi]", ger: "schwer (Gewicht)", ctx: "⚠️ Kontrast: schwer vom Gewicht = a heavy box | schwer/schwierig = a hard question." },
+            { id: "5_56", eng: "furniture (no pl)", phon: "['fɜ:nɪtʃə]", ger: "Möbel", ctx: "⚠️ Steht im Englischen immer im Singular! The furniture IS new." },
+            { id: "5_57", eng: "cover", phon: "['kʌvə]", ger: "bedecken", ctx: "Satz: It was cold so she covered her baby with her jacket." },
+            { id: "5_58", eng: "arm", phon: "[ɑ:m]", ger: "Arm", ctx: "Körperteil." },
+            { id: "5_59", eng: "elevator (AE)", phon: "['elɪveɪtə]", ger: "Aufzug", ctx: "⚠️ AE: elevator ◀▶ BE: lift." },
+            { id: "5_60", eng: "building", phon: "['bɪldɪŋ]", ger: "Gebäude", ctx: "Hochhauskomplex." },
+            { id: "5_61", eng: "power line", phon: "['paʊə laɪn]", ger: "Stromleitung", ctx: "Strommast." },
+            { id: "5_62", eng: "police officer", phon: "[pə'li:s ɒfɪsə]", ger: "Polizeibeamter / -beamtin", ctx: "-" },
+            { id: "5_63", eng: "smell", phon: "[smel]", ger: "Geruch; Gestank", ctx: "noun: smell | verb: (to) smell = riechen. What's that horrible smell?" },
+            { id: "5_64", eng: "burn, burnt, burnt", phon: "[bɜ:n], [bɜ:nt]", ger: "brennen, verbrennen", ctx: "Unregelmäßiges Verb." },
+            { id: "5_65", eng: "strong", phon: "[strɒŋ]", ger: "stark", ctx: "Adjektiv." },
+            { id: "5_66", eng: "board", phon: "[bɔ:d]", ger: "Brett", ctx: "Satz: There’s a hole in this board. I think it’s broken." },
+            { id: "5_67", eng: "hole", phon: "[həʊl]", ger: "Loch", ctx: "Öffnung im Brett." },
+            { id: "5_68", eng: "broken", phon: "['brəʊkən]", ger: "zerbrochen, kaputt", ctx: "Zustand." },
+            { id: "5_69", eng: "cellar", phon: "['selə]", ger: "Keller", ctx: "Untergeschoss." },
+            { id: "5_70", eng: "be hurt / get hurt", phon: "-", ger: "verletzt sein, sich verletzen", ctx: "Zustand / Aktion." },
+            { id: "5_71", eng: "point (at / to)", phon: "[pɔɪnt]", ger: "zeigen, deuten (auf)", ctx: "verb: (to) point | noun: point = Punkt." },
+            { id: "5_72", eng: "hold out, held, held", phon: "[həʊld aʊt]", ger: "hinhalten", ctx: "Satz: 'Can you give me that book, please?', she said and held out her hand." },
+            { id: "5_73", eng: "shake, shook, shaken", phon: "[ʃeɪk], [ʃʊk], ['ʃeɪkən]", ger: "schütteln", ctx: "They’re shaking hands." },
+            { id: "5_74", eng: "enough", phon: "[ɪ'nʌf]", ger: "genug", ctx: "Satz: Is one sandwich enough? Or are you still hungry?" },
+            { id: "5_75", eng: "make a decision", phon: "-", ger: "eine Entscheidung fällen", ctx: "Wendung." },
+            { id: "5_76", eng: "(to) save", phon: "[seɪv]", ger: "retten; sparen", ctx: "Sätze: The man saved the dog's life (retten) / I need to save money (sparen)." },
+            { id: "5_77", eng: "(to) hope", phon: "[həʊp]", ger: "hoffen", ctx: "Satz: I hope you like my school uniform." },
+            { id: "5_78", eng: "bark (at sb.)", phon: "[bɑ:k]", ger: "(jn. an)bellen", ctx: "Tierlaut." },
+            { id: "5_79", eng: "owe sb. sth.", phon: "[əʊ]", ger: "jm. etwas schulden, schuldig sein", ctx: "Sätze: I still owe you some money. You don't owe me anything, it's OK." },
+            { id: "5_80", eng: "Irregular past participles", phon: "-", ger: "Unregelmäßige 3. Formen", ctx: "⚠️ Tabelle: be->been, come->come, do->done, find->found, give->given, go->gone, get->got, have->had, leave->left, make->made, meet->met, put->put, ride->ridden, take->taken, tell->told." }
+        ];
+
+        const e6u6_data = [
+            { id: "6_1", eng: "niece", phon: "[ni:s]", ger: "Nichte", ctx: "Familienmitglied." },
+            { id: "6_2", eng: "desert", phon: "['dezət]", ger: "Wüste", ctx: "⚠️ Verwechslungsgefahr: desert ['dezət] = Wüste ◀▶ dessert [dɪ'zɜ:t] = Nachspeise." },
+            { id: "6_3", eng: "grade (AE)", phon: "[ɡreɪd]", ger: "Klasse, Schuljahr", ctx: "⚠️ AE: grade ◀▶ BE: (school) year. My sister is now in third grade." },
+            { id: "6_4", eng: "Hispanic", phon: "[hɪ'spænɪk]", ger: "hispanisch (lateinamerikanischer Herkunft)", ctx: "Junge mit Cap." },
+            { id: "6_5", eng: "baggy", phon: "['bæɡi]", ger: "weit (geschnitten) (Kleidung)", ctx: "baggy pants = Schlabberhose." },
+            { id: "6_6", eng: "pants (pl) (AE)", phon: "[pænts]", ger: "(eine) Hose", ctx: "⚠️ AE: pants ◀▶ BE: trousers." },
+            { id: "6_7", eng: "period", phon: "['pɪəriəd]", ger: "(Unterrichts-)Stunde", ctx: "⚠️ AE: period ◀▶ BE: lesson." },
+            { id: "6_8", eng: "recess (AE)", phon: "[rɪ'ses]", ger: "Pause", ctx: "⚠️ AE: recess ◀▶ BE: break." },
+            { id: "6_9", eng: "after-school activities", phon: "-", ger: "AGs (freiwillige Veranstaltungen nach Unterrichtsschluss)", ctx: "Schulalltag." },
+            { id: "6_10", eng: "backpack", phon: "['bækpæk]", ger: "Rucksack", ctx: "BE nutzt auch 'rucksack' ['rʌksæk]." },
+            { id: "6_11", eng: "schedule (AE)", phon: "['skedʒu:l]", ger: "Stundenplan", ctx: "⚠️ AE: schedule ◀▶ BE: timetable." },
+            { id: "6_12", eng: "Pronunciation: BE vs. AE", phon: "-", ger: "Lautliche Unterschiede", ctx: "⚠️ BE [ɑ:] vs AE [æ] (ask, can't) | BE [ju:] vs AE [u:] (new, Tuesday) | BE [ɒ] vs AE [ɑ:] (clock, hot). AE spricht das 'r' hörbar und das 't' zwischen Vokalen wie ein weiches 'd' (city ['sɪdi])." },
+            { id: "6_13", eng: "special", phon: "['speʃl]", ger: "Sonderausgabe (Magazin); Sondersendung (Fernsehen)", ctx: "Bedeutungen: 1. besondere(r, s); 2. Sonderausgabe." },
+            { id: "6_14", eng: "even", phon: "['i:vn]", ger: "sogar, selbst", ctx: "Satz: Everybody tried to help, even the children. Verneinung: not even = nicht einmal." },
+            { id: "6_15", eng: "(to) support", phon: "[sə'pɔ:t]", ger: "unterstützen", ctx: "Synonym: (to) help." },
+            { id: "6_16", eng: "leg", phon: "[leɡ]", ger: "Bein", ctx: "Körperteil: We have two arms and two legs." },
+            { id: "6_17", eng: "(to) practice (AE)", phon: "['præktɪs]", ger: "üben, trainieren", ctx: "⚠️ Schreibweise: BE verb: (to) practise | Nomen generell: practice = Übung, Erfahrung." },
+            { id: "6_18", eng: "time", phon: "[taɪm]", ger: "Mal / Zeit", ctx: "Beispiele: Do you have time? (Zeit) / three times (dreimal) / the last time / this time." },
+            { id: "6_19", eng: "three times a week", phon: "-", ger: "dreimal pro Woche", ctx: "Satz: We love Indian food. We have it three times a month." },
+            { id: "6_20", eng: "(to) lose, lost, lost", phon: "[lu:z], [lɒst]", ger: "verlieren", ctx: "Unregelmäßiges Verb." },
+            { id: "6_21", eng: "I'm going to play ...", phon: "-", ger: "ich werde ... spielen", ctx: "Zukunftsform (Absicht)." },
+            { id: "6_22", eng: "(to) beat, beat, beaten", phon: "[bi:t], ['bi:tn]", ger: "schlagen, besiegen", ctx: "Satz: I beat my brother at tennis last Sunday (= I won and he lost)." },
+            { id: "6_23", eng: "score", phon: "[skɔ:]", ger: "Spiel-/Punktestand; Punkt erzielen", ctx: "noun: score = Spielstand | verb: (to) score = (Punkt/Tor) erzielen." },
+            { id: "6_24", eng: "picnic", phon: "['pɪknɪk]", ger: "Picknick", ctx: "Wendung: (to) have a picnic = ein Picknick machen." },
+            { id: "6_25", eng: "before", phon: "[bɪ'fɔ:]", ger: "zuvor, vorher / vor", ctx: "⚠️ Nuancen: 1. vor der Schule (before school), 2. bevor du gehst (before you go), 3. noch nie zuvor gehört (I've never heard this song before)." },
+            { id: "6_26", eng: "(to) hang out", phon: "[hæŋ 'aʊt]", ger: "rumhängen, abhängen", ctx: "Freizeitbeschäftigung." },
+            { id: "6_27", eng: "day out, pl days out", phon: "-", ger: "(Tages-)Ausflug", ctx: "Freizeit." },
+            { id: "6_28", eng: "football (AE)", phon: "['fʊtbɔ:l]", ger: "American Football", ctx: "⚠️ Verwechslungsgefahr: BE: football = Fußball | AE: football = American Football." },
+            { id: "6_29", eng: "whole", phon: "[həʊl]", ger: "ganze(r, s)", ctx: "Satz: Yesterday we played cards the whole evening." },
+            { id: "6_30", eng: "(to) cheer", phon: "[tʃɪə]", ger: "jubeln, anfeuern", ctx: "Satz: Everyone cheered when Amy's team won the match." },
+            { id: "6_31", eng: "(to) teach, taught, taught", phon: "[ti:tʃ], [tɔ:t]", ger: "lehren, unterrichten", ctx: "Sätze: Mr Schwarz teaches English. My sister is teaching me to play the guitar (bringt mir bei)." },
+            { id: "6_32", eng: "coach", phon: "[kəʊtʃ]", ger: "Trainer/in; Reisebus", ctx: "⚠️ Doppelbedeutung: 1. Reisebus; 2. Trainer/in." },
+            { id: "6_33", eng: "grade", phon: "[ɡreɪd]", ger: "(Schul-)Note", ctx: "⚠️ Nuancen: 1. AE Klasse/Schuljahr; 2. (Schul-)Note. This year I'll get good grades in maths." },
+            { id: "6_34", eng: "final", phon: "['faɪnl]", ger: "Finale", ctx: "⚠️ Betonung auf der 1. Silbe: final ['faɪnl]" },
+            { id: "6_35", eng: "half", phon: "[hɑ:f]", ger: "halbe(r, s)", ctx: "Wendungen: half-time show (Halbzeitpause) | half an apple / hour (ein halber Apfel / eine halbe Stunde)." },
+            { id: "6_36", eng: "soccer", phon: "['sɒkə]", ger: "Fußball", ctx: "⚠️ In den USA meint 'football' American Football. Wenn man über echten Fußball spricht, nutzt man 'soccer'." },
+            { id: "6_37", eng: "cheerleading", phon: "['tʃɪəlɪ:dɪŋ]", ger: "Cheerleading", ctx: "Sportart. Die Ausübenden heißen cheerleaders." },
+            { id: "6_38", eng: "No way!", phon: "[nəʊ 'weɪ]", ger: "Auf keinen Fall!", ctx: "Satz: Do you want green hair? - No way!" },
+            { id: "6_39", eng: "(to) have to do sth.", phon: "-", ger: "etwas tun müssen", ctx: "⚠️ Satz: Look, it's late. We have to go now. Info: 'have to' wird im Alltag häufiger verwendet als 'must'." },
+            { id: "6_40", eng: "dogs' home", phon: "-", ger: "Hundeheim", ctx: "Tierschutz." },
+            { id: "6_41", eng: "everybody / everyone else", phon: "[els]", ger: "alle anderen; jede/r andere", ctx: "Satz: Would you like anything else? (sonst noch etwas)." },
+            { id: "6_42", eng: "finger", phon: "['fɪŋɡə]", ger: "Finger", ctx: "Körperteil." },
+            { id: "6_43", eng: "(to) get wet", phon: "-", ger: "nass werden", ctx: "Zustandsänderung." },
+            { id: "6_44", eng: "Übersetzung von „werden“", phon: "-", ger: "get / become / turn to sth.", ctx: "⚠️ Systematik: 1. get (We got wet / It gets hot), 2. become (It became warmer), 3. turn to (The ice turned to water)." },
+            { id: "6_45", eng: "body", phon: "['bɒdi]", ger: "Körper", ctx: "Anatomie." },
+            { id: "6_46", eng: "foot, pl feet", phon: "[fʊt], [fi:t]", ger: "Fuß", ctx: "⚠️ Doppelbedeutung: 1. Fuß (Körperteil); 2. Längenmaß (ca. 30 cm)." },
+            { id: "6_47", eng: "ear", phon: "[ɪə]", ger: "Ohr", ctx: "Gesichtsteil." },
+            { id: "6_48", eng: "face", phon: "[feɪs]", ger: "Gesicht", ctx: "Kopfseite." },
+            { id: "6_49", eng: "nose", phon: "[nəʊz]", ger: "Nase", ctx: "-" },
+            { id: "6_50", eng: "throat", phon: "[θrəʊt]", ger: "Hals", ctx: "-" },
+            { id: "6_51", eng: "mouth", phon: "[maʊθ]", ger: "Mund", ctx: "-" },
+            { id: "6_52", eng: "stomach", phon: "['stʌmək]", ger: "Bauch; Magen", ctx: "⚠️ Aussprache beachten: stomach ['stʌmək]" },
+            { id: "6_53", eng: "What's wrong?", phon: "-", ger: "Was fehlt dir / Ihnen? (beim Arzt)", ctx: "Arzt-Frage." },
+            { id: "6_54", eng: "have a stomach ache / headache", phon: "[eɪk], ['hedeɪk]", ger: "Bauchschmerzen / Kopfschmerzen haben", ctx: "⚠️ Immer mit Artikel: I have a stomach ache / a headache." },
+            { id: "6_55", eng: "a sore throat", phon: "[sɔ: 'θrəʊt]", ger: "Halsschmerzen", ctx: "Satz: I have a sore throat." },
+            { id: "6_56", eng: "temperature", phon: "['temprətʃə]", ger: "Temperatur; Fieber", ctx: "Satz: I have a temperature." },
+            { id: "6_57", eng: "cough", phon: "[kʌf]", ger: "Husten", ctx: "noun: cough | verb: (to) cough = husten. He's coughing." },
+            { id: "6_58", eng: "medicine (no pl)", phon: "['medsn]", ger: "Medizin; Medikament(e)", ctx: "⚠️ Unzählbares Substantiv im Englischen!" },
+            { id: "6_59", eng: "sick", phon: "[sɪk]", ger: "krank", ctx: "Gegenteil: sick ◀▶ healthy." },
+            { id: "6_60", eng: "Usage: ill vs. sick", phon: "-", ger: "Krankheitsadjektive im Vergleich", ctx: "⚠️ Nach Verben geht beiderlei (look ill/sick), im AE wird meist 'sick' genutzt. Vor Nomen geht NUR 'sick' (a sick child). Achtung: 'to be sick' meint auch 'sich übergeben müssen'." },
+            { id: "6_61", eng: "camp", phon: "[kæmp]", ger: "(Zelt-)Lager", ctx: "summer camp = Ferienlager." },
+            { id: "6_62", eng: "awesome", phon: "['ɔ:səm]", ger: "klasse, stark, großartig", ctx: "⚠️ AE, infml. Synonyme: super, great." },
+            { id: "6_63", eng: "it sounds fun", phon: "-", ger: "es klingt, als ob es Spaß macht", ctx: "verb: (to) sound = klingen | noun: sound = Geräusch." },
+            { id: "6_64", eng: "public holiday", phon: "['hɒlədeɪ]", ger: "öffentlicher / gesetzlicher Feiertag", ctx: "Kalenderbegriff." },
+            { id: "6_65", eng: "Easter", phon: "['i:stə]", ger: "Ostern", ctx: "Osterfest." },
+            { id: "6_66", eng: "Christmas", phon: "['krɪsməs]", ger: "Weihnachten", ctx: "Weihnachtsfest." },
+            { id: "6_67", eng: "listener", phon: "['lɪsənə]", ger: "Zuhörer/in", ctx: "Personenbezeichnung." },
+            { id: "6_68", eng: "research", phon: "[rɪ'sɜ:tʃ]", ger: "Forschung(en), Recherche(n)", ctx: "Wendung: (to) do research = recherchieren." },
+            { id: "6_69", eng: "Independence Day", phon: "[ɪndɪ'pendəns deɪ]", ger: "(US-amerikanischer) Unabhängigkeitstag (4. Juli)", ctx: "Feiertag." },
+            { id: "6_70", eng: "Memorial Day", phon: "[mə'mɔ:riəl deɪ]", ger: "Gedenktag (zur Erinnerung an Kriegsopfer)", ctx: "Feiertag." },
+            { id: "6_71", eng: "parade", phon: "[pə'reɪd]", ger: "Parade, Umzug", ctx: "Festlichkeit." },
+            { id: "6_72", eng: "turkey", phon: "['tɜ:ki]", ger: "Truthahn, Pute; Putenfleisch", ctx: "Truthahn." },
+            { id: "6_73", eng: "Thanksgiving Day", phon: "[θæŋks'ɡɪvɪŋ deɪ]", ger: "Erntedankfest", ctx: "Feiertag." },
+            { id: "6_74", eng: "nurse", phon: "[nɜ:s]", ger: "Krankenpfleger/in", ctx: "Medizinisches Personal." },
+            { id: "6_75", eng: "Well, ...", phon: "[wel]", ger: "Nun, ... / Also, ... / Na ja, ...", ctx: "Gesprächseinleitung." },
+            { id: "6_76", eng: "chance", phon: "[tʃɑ:ns]", ger: "Chance, Gelegenheit", ctx: "Satz: If you have the chance, you should visit the British Museum." },
+            { id: "6_77", eng: "have got", phon: "[hæv 'ɡɒt]", ger: "haben", ctx: "Synonym: (to) have." },
+            { id: "6_78", eng: "Grammatik: German „haben“", phon: "-", ger: "Anwendung im Simple Present vs. Past", ctx: "⚠️ Im Simple Present wird oft 'have got' genutzt (We haven't got a dog). Aber Vorsicht im Simple Past: NICHT had got! Richtig: When I was little, I had a hamster." },
+            { id: "6_79", eng: "both", phon: "[bəʊθ]", ger: "beide", ctx: "Satz: Do you want to buy both T-shirts?" },
+            { id: "6_80", eng: "(not) at all", phon: "-", ger: "überhaupt (nicht)", ctx: "Sätze: Have you seen Jack at all this week? No, I haven't seen him at all." },
+            { id: "6_81", eng: "Austria", phon: "['ɒstriə]", ger: "Österreich", ctx: "Nachbarland." },
+            { id: "6_82", eng: "table", phon: "['teɪbl]", ger: "Tabelle / Tisch", ctx: "⚠️ Doppelbedeutung: 1. Tisch; 2. Tabelle." },
+            { id: "6_83", eng: "graph", phon: "[ɡræf]", ger: "Graph, Schaubild", ctx: "Präsentation." },
+            { id: "6_84", eng: "chart", phon: "[tʃɑ:t]", ger: "Diagramm; Tabelle", ctx: "Wendung: pie chart = Tortendiagramm." },
+            { id: "6_85", eng: "present vs. (to) present", phon: "-", ger: "Aussprache- und Bedeutungswechsel", ctx: "⚠️ Gleiche Schreibweise: 1. present ['preznt] (Geschenk; Gegenwart) ◀▶ 2. (to) present [prɪ'zent] (präsentieren, vorstellen)." },
+            { id: "6_86", eng: "result", phon: "[rɪ'zʌlt]", ger: "Ergebnis", ctx: "Wendung: as a result = folglich, demzufolge." },
+            { id: "6_87", eng: "clear", phon: "[klɪə]", ger: "klar, deutlich", ctx: "Kombinationen: clear directions (deutliche Anweisungen) | Adverb: speak clearly (deutlich sprechen)." }
+        ];
+
+        const e6u7_data = [
+            { id: "7_1", eng: "build, built, built", phon: "[bɪld], [bɪlt]", ger: "bauen", ctx: "-" },
+            { id: "7_2", eng: "win, won, won", phon: "[wɪn], [wʌn]", ger: "gewinnen", ctx: "-" },
+            { id: "7_3", eng: "stand, stood, stood", phon: "[stænd], [stʊd]", ger: "stehen; sich hinstellen", ctx: "-" },
+            { id: "7_4", eng: "get, got, got", phon: "[ɡet], [ɡɒt]", ger: "bekommen, holen, gelangen", ctx: "-" },
+            { id: "7_5", eng: "forget, forgot, forgotten", phon: "[fə'ɡet], [fə'ɡɒt], [fə'ɡɒtn]", ger: "vergessen", ctx: "-" },
+            { id: "7_6", eng: "feed, fed, fed", phon: "[fi:d], [fed]", ger: "füttern", ctx: "-" },
+            { id: "7_7", eng: "lend, lent, lent", phon: "[lend], [lent]", ger: "leihen, verleihen", ctx: "-" },
+            { id: "7_8", eng: "mean, meant, meant", phon: "[mi:n], [ment]", ger: "bedeuten, meinen", ctx: "-" },
+            { id: "7_9", eng: "cry, cried, cried", phon: "[kraɪ], [kraɪd]", ger: "weinen", ctx: "-" },
+            { id: "7_10", eng: "take off, took, taken", phon: "[teɪk ɒf], [tʊk], ['teɪkən]", ger: "ausziehen, ablegen", ctx: "-" },
+            { id: "7_11", eng: "burn, burnt, burnt", phon: "[bɜ:n], [bɜ:nt]", ger: "brennen, verbrennen", ctx: "-" },
+            { id: "7_12", eng: "hold out, held, held", phon: "[həʊld aʊt], [held]", ger: "hinhalten", ctx: "-" },
+            { id: "7_13", eng: "shake, shook, shaken", phon: "[ʃeɪk], [ʃʊk], ['ʃeɪkən]", ger: "schütteln", ctx: "-" },
+            { id: "7_14", eng: "be, was/were, been", phon: "[bi:], [wɒz]/[wɜ:], [bi:n]", ger: "sein", ctx: "-" },
+            { id: "7_15", eng: "come, came, come", phon: "[kʌm], [keɪm], [kʌm]", ger: "kommen", ctx: "-" },
+            { id: "7_16", eng: "do, did, done", phon: "[du:], [dɪd], [dʌn]", ger: "tun, machen", ctx: "-" },
+            { id: "7_17", eng: "drink, drank, drunk", phon: "[drɪŋk], [dræŋk], [drʌŋk]", ger: "trinken", ctx: "-" },
+            { id: "7_18", eng: "eat, ate, eaten", phon: "[i:t], [et], ['i:tn]", ger: "essen", ctx: "-" },
+            { id: "7_19", eng: "find, found, found", phon: "[faɪnd], [faʊnd]", ger: "finden", ctx: "-" },
+            { id: "7_20", eng: "give, gave, given", phon: "[ɡɪv], [ɡeɪv], ['ɡɪvn]", ger: "geben", ctx: "-" },
+            { id: "7_21", eng: "go, went, gone", phon: "[ɡəʊ], [went], [ɡɒn]", ger: "gehen", ctx: "-" },
+            { id: "7_22", eng: "have, had, had", phon: "[hæv], [hæd]", ger: "haben", ctx: "-" },
+            { id: "7_23", eng: "leave, left, left", phon: "[li:v], [left]", ger: "(ver)lassen", ctx: "-" },
+            { id: "7_24", eng: "make, made, made", phon: "[meɪk], [meɪd]", ger: "machen", ctx: "-" },
+            { id: "7_25", eng: "meet, met, met", phon: "[mi:t], [met]", ger: "treffen", ctx: "-" },
+            { id: "7_26", eng: "put, put, put", phon: "[pʊt]", ger: "setzen, stellen, legen", ctx: "-" },
+            { id: "7_27", eng: "ride, rode, ridden", phon: "[raɪd], [rəʊd], ['rɪdn]", ger: "reiten, fahren", ctx: "-" },
+            { id: "7_28", eng: "swim, swam, swum", phon: "[swɪm], [swæm], [swʌm]", ger: "schwimmen", ctx: "-" },
+            { id: "7_29", eng: "take, took, taken", phon: "[teɪk], [tʊk], ['teɪkən]", ger: "nehmen", ctx: "-" },
+            { id: "7_30", eng: "tell, told, told", phon: "[tel], [təʊld]", ger: "erzählen", ctx: "-" },
+            { id: "7_31", eng: "lose, lost, lost", phon: "[lu:z], [lɒst]", ger: "verlieren", ctx: "-" },
+            { id: "7_32", eng: "beat, beat, beaten", phon: "[bi:t], ['bi:tn]", ger: "schlagen, besiegen", ctx: "-" },
+            { id: "7_33", eng: "teach, taught, taught", phon: "[ti:tʃ], [tɔ:t]", ger: "lehren, unterrichten", ctx: "-" }
+        ];
+
+        const dataMap = {
+            1: e6u1_data,
+            2: e6u2_data,
+            3: e6u3_data,
+            4: e6u4_data,
+            5: e6u5_data,
+            6: e6u6_data,
+            7: e6u7_data
+        };
+
+        function getVocabPool(unit) {
+            return dataMap[unit] || [];
+        }
+    </script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+        :root {
+            --bg-main: #ffffff;
+            --bg-card: #ffffff;
+            --bg-panel: #f7f7f7;
+            --border: #e5e5e5;
+            --text-main: #1f1f1f;   
+            --text-muted: #6c6c6c;  
+            --accent: #58cc02; 
+            --accent-hover: #46a302;
+            --duo-orange: #ff9600;
+            --duo-blue: #1cb0f6;
+            --duo-red: #ea2b2b;
+            --radius: 16px;
+        }
+
+        [data-theme="dark"] {
+            --bg-main: #131f24;
+            --bg-card: #1f2f38;
+            --bg-panel: #14252d;
+            --border: #37464f;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8; 
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: 'Nunito', sans-serif;
+            transition: background-color 0.2s ease, color 0.2s ease;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .duo-btn-bottom-shadow {
+            box-shadow: 0 4px 0 var(--border);
+            transform: translateY(0);
+            transition: all 0.1s ease;
+        }
+        .duo-btn-bottom-shadow:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 var(--border);
+        }
+
+        .duo-panel {
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            background-color: var(--bg-card);
+        }
+
+        .flip-container {
+            perspective: 1200px;
+            width: 100%;
+            max-width: 440px;
+            height: 260px;
+        }
+        .flip-card {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        .flip-container.flipped .flip-card {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: var(--radius);
+            border: 2px solid var(--border);
+            box-shadow: 0 4px 0 var(--border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            background: var(--bg-card);
+        }
+        .card-back { transform: rotateY(180deg); }
+
+        .card-success .card-front, .card-success .card-back {
+            border-color: #58cc02 !important;
+            background-color: #58cc02 !important;
+            color: #ffffff !important;
+        }
+        .card-success .card-front h2, .card-success .card-back h2, .card-success .card-front span, .card-success .card-back span {
+            color: #ffffff !important;
+        }
+        
+        .card-fail .card-front, .card-fail .card-back {
+            border-color: #ea2b2b !important;
+            background-color: #ea2b2b !important;
+            color: #ffffff !important;
+        }
+        .card-fail .card-front h2, .card-fail .card-back h2, .card-fail .card-front span, .card-fail .card-back span {
+            color: #ffffff !important;
+        }
+
+        @media print {
+            body, html { background: #fff !important; color: #000 !important; }
+            .no-print { display: none !important; }
+            #print-section { display: block !important; width: 100%; position: absolute; left: 0; top: 0; padding: 10px; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between p-4 md:p-6 select-none">
+
+    <div id="print-section" class="hidden"></div>
+
+    <div class="w-full max-w-2xl mx-auto flex flex-col justify-between flex-grow gap-4 no-print">
+        
+        <div class="w-full flex justify-between items-center border-b-2 border-[var(--border)] pb-2">
+            <h1 class="text-xl md:text-2xl font-extrabold tracking-tight">🎯 Grade 6 Vocabulary Trainer</h1>
+        </div>
+
+        <header class="w-full flex items-center justify-between gap-3 relative mt-1">
+            <div class="relative inline-block text-left">
+                <button onclick="toggleMenu(event)" class="text-3xl hover:text-[#1cb0f6] bg-transparent border-none transition-colors cursor-pointer flex items-center justify-center p-1 focus:outline-none font-bold" title="Mode ändern">
+                    ☰
+                </button>
+                
+                <div id="menu-dropdown" class="absolute left-0 top-12 w-48 bg-[var(--bg-card)] border-2 border-[var(--border)] rounded-2xl hidden z-50 shadow-lg overflow-hidden">
+                    <button onclick="selectMode('flashcard')" class="w-full text-left px-4 py-3 text-sm font-bold hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer flex items-center gap-2">
+                        🎴 Flashcards
+                    </button>
+                    <button onclick="selectMode('quiz')" class="w-full text-left px-4 py-3 text-sm font-bold hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer flex items-center gap-2">
+                        ❓ Quiz Mode
+                    </button>
+                    <button onclick="selectMode('write')" class="w-full text-left px-4 py-3 text-sm font-bold hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer flex items-center gap-2">
+                        ✍️ Writing Challenge
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-3 flex-wrap justify-end">
+                <button onclick="toggleDirection()" class="flex items-center gap-2 bg-[var(--bg-panel)] border-2 border-[var(--border)] px-3 py-1.5 rounded-xl text-xs font-extrabold hover:bg-black/5 dark:hover:bg-white/5 transition-all cursor-pointer focus:outline-none">
+                    <span id="direction-label-text">DE ➔ EN</span>
+                </button>
+
+                <div class="flex items-center gap-1 bg-[var(--bg-panel)] border-2 border-[var(--border)] px-3 py-1.5 rounded-xl text-xs font-bold">
+                    <span class="text-[var(--text-muted)]">Unit:</span>
+                    <select id="unit-select" onchange="changeUnit(this.value)" class="bg-transparent text-[var(--text-main)] focus:outline-none cursor-pointer min-w-[125px]">
+                    </select>
+                </div>
+
+                <button onclick="toggleTheme()" class="flex items-center justify-center bg-[var(--bg-panel)] border-2 border-[var(--border)] px-2.5 py-1.5 rounded-xl text-sm font-bold hover:text-[#1cb0f6] transition-colors cursor-pointer">
+                    🌓
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-grow flex flex-col justify-center items-center py-2">
+            
+            <div id="flashcard-interface" class="w-full flex flex-col items-center gap-4">
+                <div class="w-full max-w-md flex justify-between text-xs font-bold text-[var(--text-muted)] px-1">
+                    <span id="stack-remain">Remaining: --</span>
+                    <span id="stack-done" class="text-[var(--accent)]">Mastered: --</span>
+                </div>
+
+                <div class="flip-container" id="vocab-card-container" onclick="toggleCardFlip()">
+                    <div class="flip-card">
+                        <div class="card-front relative" id="front-side-view">
+                            <span class="absolute top-3 left-4 text-[10px] font-extrabold tracking-wider uppercase text-[var(--text-muted)]" id="front-badge">-</span>
+                            <div class="flex items-center justify-center gap-3 w-full px-2">
+                                <h2 id="front-main-text" class="text-2xl md:text-3xl font-extrabold text-center break-words max-w-[80%]">-</h2>
+                                <button id="front-audio-btn" onclick="playAudio(event)" class="text-xl p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer">🔊</button>
+                            </div>
+                            <span class="absolute bottom-3 text-[10px] font-bold text-[var(--text-muted)]">Click card to flip</span>
+                        </div>
+
+                        <div class="card-back relative" id="back-side-view">
+                            <span class="absolute top-3 left-4 text-[10px] font-extrabold tracking-wider uppercase text-[var(--text-muted)]" id="back-badge">-</span>
+                            <span class="absolute top-3 right-4 text-[10px] font-bold text-[#ff9600] animate-pulse">✍️ Write this in your notebook!</span>
+                            
+                            <div class="flex items-center justify-center gap-3 w-full px-2">
+                                <h2 id="back-main-text" class="text-2xl md:text-3xl font-extrabold text-[#1cb0f6] text-center break-words max-w-[80%]">-</h2>
+                                <button id="back-audio-btn" onclick="playAudio(event)" class="text-xl p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors hidden cursor-pointer">🔊</button>
+                            </div>
+                            
+                            <div id="card-context-box" class="w-full mt-4 p-3 rounded-xl border-2 border-[var(--border)] bg-[var(--bg-panel)] text-center max-h-[80px] overflow-y-auto">
+                                <p id="card-context" class="text-xs font-semibold italic text-[var(--text-main)]"></p>
+                            </div>
+                            <span class="absolute bottom-3 text-[10px] font-bold text-[var(--text-muted)]">Click card to flip</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full max-w-md grid grid-cols-2 gap-4 mt-2" id="learning-actions-box">
+                    <button onclick="handleVocabKnowledge(false)" class="h-12 rounded-2xl border-2 border-[#ea2b2b] bg-[#ea2b2b] text-white font-extrabold shadow-[0_4px_0_#b91c1c] active:translate-y-1 active:shadow-none transition-all cursor-pointer flex justify-center items-center gap-2">
+                        ❌ Not yet
+                    </button>
+                    <button onclick="handleVocabKnowledge(true)" class="h-12 rounded-2xl border-2 border-[#58cc02] bg-[#58cc02] text-white font-extrabold shadow-[0_4px_0_#46a302] active:translate-y-1 active:shadow-none transition-all cursor-pointer flex justify-center items-center gap-2">
+                        ✅ I know it!
+                    </button>
+                </div>
+            </div>
+
+            <div id="quiz-interface" class="w-full max-w-lg flex flex-col gap-4 hidden">
+                <div class="duo-panel p-5 md:p-6 flex flex-col w-full shadow-sm">
+                    <div class="flex justify-between items-center border-b-2 border-[var(--border)] pb-3 mb-4">
+                        <span class="text-xs font-extrabold tracking-wider uppercase text-[var(--text-muted)]" id="quiz-mode-badge">-</span>
+                        <span id="quiz-score" class="text-sm font-extrabold text-[#58cc02]">Quiz Score: 0</span>
+                    </div>
+
+                    <div class="text-center my-2">
+                        <p class="text-xs font-bold text-[var(--text-muted)] mb-2" id="quiz-instruction-text">-</p>
+                        <div class="flex items-center justify-center gap-2">
+                            <h2 id="quiz-question" class="text-2xl font-extrabold">-</h2>
+                            <button id="quiz-audio-btn" onclick="playQuizAudio()" class="text-lg p-1.5 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer">🔊</button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-3 my-4" id="quiz-options-container"></div>
+
+                    <div class="flex justify-between items-center mt-3 pt-3 border-t-2 border-[var(--border)]">
+                        <span id="quiz-feedback" class="text-sm font-bold italic text-[var(--text-muted)]">Select the correct answer...</span>
+                        <button id="quiz-next-btn" onclick="nextQuizQuestion()" class="px-5 py-2.5 bg-[#1cb0f6] text-white hover:bg-[#1499d6] font-extrabold rounded-xl text-xs transition-colors duo-btn-bottom-shadow border-b-4 border-[#1499d6] cursor-pointer hidden">Continue ➔</button>
+                    </div>
+                </div>
+
+                <div id="quiz-error-list-box" class="duo-panel p-4 w-full border-[#ea2b2b]/30 bg-red-500/5 hidden">
+                    <div class="flex justify-between items-center border-b-2 border-[#ea2b2b]/20 pb-2 mb-2">
+                        <span class="text-sm font-extrabold text-[#ea2b2b] flex items-center gap-1.5">📋 Review List (Quiz)</span>
+                        <button onclick="downloadPDF('quiz')" class="px-3 py-1 bg-[var(--bg-card)] text-[#ea2b2b] border-2 border-[#ea2b2b]/20 rounded-xl text-[10px] font-extrabold transition-all cursor-pointer">⬇️ PDF</button>
+                    </div>
+                    <ul id="quiz-error-ul" class="text-sm divide-y divide-[var(--border)]/30 max-h-[150px] overflow-y-auto"></ul>
+                </div>
+            </div>
+
+            <div id="write-interface" class="w-full max-w-lg flex flex-col gap-4 hidden">
+                <div class="duo-panel p-5 md:p-6 flex flex-col w-full shadow-sm">
+                    <div class="flex justify-between items-center border-b-2 border-[var(--border)] pb-3 mb-4">
+                        <span class="text-xs font-extrabold tracking-wider uppercase text-[#ff9600]" id="write-mode-badge">Writing (12-Word Challenge)</span>
+                        <span id="write-progress" class="text-xs font-bold text-[var(--text-muted)]">Word: 0 / 12</span>
+                    </div>
+
+                    <div class="text-center my-2">
+                        <p class="text-xs font-bold text-[var(--text-muted)] mb-2">Translate and type the missing word:</p>
+                        <h2 id="write-question" class="text-2xl font-extrabold">-</h2>
+                        <p id="write-hint" class="text-xs font-bold text-[var(--text-muted)] mt-1 min-h-[18px]">-</p>
+                    </div>
+
+                    <div class="my-4">
+                        <input type="text" id="write-input" autocomplete="off" spellcheck="false" placeholder="Type your translation here..." 
+                               class="w-full p-3.5 rounded-2xl border-2 border-[var(--border)] bg-[var(--bg-panel)] text-center font-bold text-xl text-[var(--text-main)] focus:outline-none focus:border-[#1cb0f6] transition-colors">
+                    </div>
+
+                    <div class="flex justify-between items-center mt-2 pt-3 border-t-2 border-[var(--border)]">
+                        <span id="write-feedback" class="text-xs font-bold italic text-[var(--text-muted)]">Type your answer and press Enter...</span>
+                        <button id="write-next-btn" onclick="nextWriteQuestion()" class="px-5 py-2.5 bg-[#58cc02] text-white hover:bg-[#46a302] font-extrabold rounded-xl text-xs transition-colors duo-btn-bottom-shadow border-b-4 border-[#46a302] cursor-pointer hidden">Continue ➔</button>
+                    </div>
+                </div>
+
+                <div id="write-error-list-box" class="duo-panel p-4 w-full border-[#ff9600]/30 bg-amber-500/5 hidden">
+                    <div class="flex justify-between items-center border-b-2 border-[#ff9600]/20 pb-2 mb-2">
+                        <span class="text-sm font-extrabold text-[#ff9600] flex items-center gap-1.5">📋 Spelling Review List</span>
+                        <button onclick="downloadPDF('schreiben')" class="px-3 py-1 bg-[var(--bg-card)] text-[#ff9600] border-2 border-[#ff9600]/20 rounded-xl text-[10px] font-extrabold transition-all cursor-pointer">⬇️ PDF</button>
+                    </div>
+                    <ul id="write-error-ul" class="text-sm divide-y divide-[var(--border)]/30 max-h-[150px] overflow-y-auto"></ul>
+                </div>
+            </div>
+
+        </main>
+
+        <section class="w-full duo-panel p-4 grid grid-cols-3 gap-4 items-center shadow-sm">
+            <div class="text-left flex flex-col justify-center">
+                <div class="text-xs font-extrabold text-[#ff9600] uppercase tracking-wider">Level <span id="user-level">1</span></div>
+                <div class="text-[10px] font-bold text-[var(--text-muted)] mt-0.5"><span id="user-xp">0</span> / <span id="next-level-xp">100</span> XP</div>
+            </div>
+            <div class="w-full bg-[var(--border)] h-3 rounded-full overflow-hidden max-w-[240px] mx-auto">
+                <div id="xp-bar-fill" class="bg-[#58cc02] h-full transition-all duration-300 rounded-full" style="width: 0%"></div>
+            </div>
+            <div class="text-right flex items-center justify-end text-sm">
+                <span class="text-xs text-[var(--text-muted)] font-bold mr-1.5">Streak:</span> <span class="text-base">🔥</span> <span id="streak-counter" class="font-extrabold text-[#ff9600]">0</span>
+            </div>
+        </section>
+
+        <div class="w-full flex items-center justify-between bg-[var(--bg-panel)] border-2 border-[var(--border)] px-4 py-3 rounded-2xl text-xs font-bold text-[var(--text-muted)]">
+            <div class="flex items-center gap-6">
+                <span class="text-[10px] uppercase font-extrabold tracking-wider">Badges:</span>
+                <span id="badge-first-step" class="filter grayscale opacity-40 transition-all" title="Learned your first word!">🥉 First Steps</span>
+                <span id="badge-streak" class="filter grayscale opacity-40 transition-all" title="Hit a 10-word streak!">🥈 Streak Master</span>
+                <span id="badge-clear" class="filter grayscale opacity-40 transition-all" title="Cleared an entire unit deck!">🥇 Unit Clearer</span>
+            </div>
+            <button onclick="confirmReset()" class="text-xs font-bold text-[#ea2b2b] hover:text-red-600 transition-colors cursor-pointer flex items-center gap-1 focus:outline-none">
+                🔄 Reset Progress
+            </button>
+        </div>
+
+        <footer class="w-full text-center text-[10px] text-[var(--text-muted)] font-bold py-1 flex flex-col sm:flex-row justify-between items-center gap-2 border-t-2 border-[var(--border)] pt-2">
+            <div class="font-bold text-[#ff9600]">
+                💡 <span class="italic">You only true master words when you can write them flawlessly by hand!</span>
+            </div>
+            <div>
+                Controls: <kbd>Space</kbd> Flip Card | <kbd>◀</kbd> Incorrect | <kbd>▶</kbd> Correct
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const defaultState = { 
+            xp: 0, level: 1, streak: 0, quizScore: 0, 
+            badges: { firstStep: false, streakMaster: false, unitClear: false } 
+        };
+
+        const correctFeedbacks = ["Spot on! 🎉", "Awesome job! ⭐", "You got it! 🌟", "Brilliant! 🚀"];
+        const incorrectFeedbacks = ["Not quite! 💪", "Nice try! 🧠", "Almost there! ✨"];
+
+        let gameState = { ...defaultState };
+        let activeStack = []; let learnedCards = []; 
+        let currentUnit = 1;
+        let activeMode = 'flashcard'; let learningDirection = 'de-en';
+        let currentQuizItem = null; let isTransitioning = false;
+
+        let quizErrors = []; let writeErrors = [];
+
+        window.onload = function() {
+            if (localStorage.getItem('duo_theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+            loadSavedState();
+            populateUnitDropdown();
+            resetCurrentUnitStack();
+            setupGlobalKeyListeners();
+            setupWriteInputFieldListener();
+            
+            window.addEventListener('click', function(e) {
+                if (!e.target.closest('#menu-dropdown') && !e.target.closest('header button')) {
+                    document.getElementById('menu-dropdown').classList.add('hidden');
+                }
+            });
+        };
+
+        function populateUnitDropdown() {
+            const select = document.getElementById('unit-select');
+            select.innerHTML = '';
+            
+            for (let u = 1; u <= 7; u++) {
+                const opt = document.createElement('option');
+                opt.value = u;
+                opt.innerText = u === 7 ? "Irregular Verbs" : `Unit ${u}`;
+                select.appendChild(opt);
+            }
+            select.value = currentUnit;
+        }
+
+        function changeUnit(unit) {
+            currentUnit = parseInt(unit);
+            gameState.streak = 0;
+            updateDashboardUI();
+            triggerInterfaceReload();
+        }
+
+        function triggerInterfaceReload() {
+            isTransitioning = false;
+            if (activeMode === 'flashcard') resetCurrentUnitStack(); 
+            else if (activeMode === 'quiz') startQuiz(); 
+            else if (activeMode === 'write') initWriteMode();
+        }
+
+        function selectMode(mode) {
+            document.getElementById('menu-dropdown').classList.add('hidden');
+            activeMode = mode;
+            updateDashboardUI();
+            
+            document.getElementById('flashcard-interface').classList.add('hidden');
+            document.getElementById('quiz-interface').classList.add('hidden');
+            document.getElementById('write-interface').classList.add('hidden');
+            clearErrorLists();
+
+            if (mode === 'flashcard') { 
+                document.getElementById('flashcard-interface').classList.remove('hidden'); 
+            } else if (mode === 'quiz') { 
+                document.getElementById('quiz-interface').classList.remove('hidden'); 
+            } else if (mode === 'write') { 
+                document.getElementById('write-interface').classList.remove('hidden'); 
+            }
+            triggerInterfaceReload();
+        }
+
+        function resetCurrentUnitStack() {
+            const pool = getVocabPool(currentUnit);
+            if (!pool || pool.length === 0) {
+                document.getElementById('front-main-text').innerText = "No data found 🚫";
+                document.getElementById('stack-remain').innerText = "Remaining: 0";
+                document.getElementById('stack-done').innerText = "Mastered: 0 / 0";
+                return;
+            }
+            activeStack = [...pool].sort(() => Math.random() - 0.5);
+            learnedCards = []; 
+            isTransitioning = false;
+            const actionsBox = document.getElementById('learning-actions-box');
+            if(actionsBox) actionsBox.classList.remove('opacity-25', 'pointer-events-none');
+            loadVocabCard();
+        }
+
+        function toggleCardFlip() { 
+            if (!isTransitioning && activeStack.length > 0) {
+                document.getElementById('vocab-card-container').classList.toggle('flipped');
+                playGong(600, 0.05);
+            }
+        }
+
+        function loadVocabCard() {
+            const card = document.getElementById('vocab-card-container'); if(!card) return;
+            card.classList.remove('flipped', 'card-success', 'card-fail');
+            card.style.transform = "scale(1)"; card.style.opacity = "1";
+
+            const poolMax = getVocabPool(currentUnit).length;
+            document.getElementById('stack-remain').innerText = `Remaining: ${activeStack.length}`;
+            document.getElementById('stack-done').innerText = `Mastered: ${learnedCards.length} / ${poolMax}`;
+
+            if (activeStack.length === 0) {
+                document.getElementById('front-main-text').innerText = "Superb Work! 🎉";
+                document.getElementById('front-badge').innerText = "Congratulations";
+                document.getElementById('front-audio-btn').classList.add('hidden');
+                document.getElementById('card-context-box').classList.add('hidden');
+                document.getElementById('learning-actions-box').classList.add('opacity-25', 'pointer-events-none');
+                if (!gameState.badges.unitClear && poolMax > 0) { gameState.badges.unitClear = true; addXP(40); }
+                return;
+            }
+
+            const item = activeStack[0];
+            const fBadge = document.getElementById('front-badge'); const bBadge = document.getElementById('back-badge');
+            const fMain = document.getElementById('front-main-text'); const bMain = document.getElementById('back-main-text');
+            const fAudio = document.getElementById('front-audio-btn'); const bAudio = document.getElementById('back-audio-btn');
+
+            if (learningDirection === 'en-de') {
+                fBadge.innerText = "English"; fMain.innerText = item.eng; fAudio.classList.remove('hidden');
+                bBadge.innerText = "German"; bMain.innerText = item.ger; bAudio.classList.add('hidden');
+            } else {
+                fBadge.innerText = "German"; fMain.innerText = item.ger; fAudio.classList.add('hidden');
+                bBadge.innerText = "English"; bMain.innerText = item.eng; bAudio.classList.remove('hidden');
+            }
+
+            const ctxBox = document.getElementById('card-context-box');
+            if (item.ctx && item.ctx !== "-") {
+                ctxBox.classList.remove('hidden'); document.getElementById('card-context').innerText = item.ctx;
+            } else { ctxBox.classList.add('hidden'); }
+        }
+
+        function handleVocabKnowledge(known) {
+            if (activeStack.length === 0 || isTransitioning) return;
+            isTransitioning = true; const card = document.getElementById('vocab-card-container'); const item = activeStack.shift();
+
+            if (known) {
+                card.classList.add('card-success'); playGong(523.25, 0.15); gameState.streak++;
+                if (!gameState.badges.firstStep) gameState.badges.firstStep = true;
+                if (gameState.streak >= 10) gameState.badges.streakMaster = true;
+                addXP(10);
+                setTimeout(() => {
+                    card.style.transform = "scale(0.9)"; card.style.opacity = "0"; learnedCards.push(item);
+                    setTimeout(() => { isTransitioning = false; loadVocabCard(); }, 200);
+                }, 250);
+            } else {
+                card.classList.add('card-fail'); playGong(293.66, 0.25); gameState.streak = 0;
+                saveState(); updateDashboardUI();
+                setTimeout(() => {
+                    card.style.transform = "translateX(15px)"; card.style.opacity = "0.5"; activeStack.push(item);
+                    setTimeout(() => { isTransitioning = false; loadVocabCard(); }, 200);
+                }, 250);
+            }
+        }
+
+        function startQuiz() {
+            const pool = getVocabPool(currentUnit); if (!pool || pool.length === 0) return;
+            currentQuizItem = pool[Math.floor(Math.random() * pool.length)];
+
+            const mBadge = document.getElementById('quiz-mode-badge'); const inst = document.getElementById('quiz-instruction-text');
+            const qEl = document.getElementById('quiz-question'); const aBtn = document.getElementById('quiz-audio-btn');
+
+            document.getElementById('quiz-feedback').innerText = "Choose the correct translation:";
+            document.getElementById('quiz-feedback').className = "text-sm font-bold text-[var(--text-muted)]";
+            document.getElementById('quiz-next-btn').classList.add('hidden');
+
+            let targetAns = ""; let answers = [];
+
+            if (learningDirection === 'en-de') {
+                mBadge.innerText = `Quiz (Unit ${currentUnit})`; inst.innerText = "What does this English word mean?";
+                qEl.innerText = currentQuizItem.eng; aBtn.classList.remove('hidden');
+                targetAns = currentQuizItem.ger;
+                let copy = pool.filter(i => i.ger !== targetAns); answers.push(targetAns);
+                while(answers.length < 4 && copy.length > 0) { let r = Math.floor(Math.random() * copy.length); answers.push(copy[r].ger); copy.splice(r, 1); }
+            } else {
+                mBadge.innerText = `Quiz (Unit ${currentUnit})`; inst.innerText = "Find the correct English translation:";
+                qEl.innerText = currentQuizItem.ger; aBtn.classList.add('hidden');
+                targetAns = currentQuizItem.eng;
+                let copy = pool.filter(i => i.eng !== targetAns); answers.push(targetAns);
+                while(answers.length < 4 && copy.length > 0) { let r = Math.floor(Math.random() * copy.length); answers.push(copy[r].eng); copy.splice(r, 1); }
+            }
+
+            answers.sort(() => Math.random() - 0.5);
+            const container = document.getElementById('quiz-options-container'); container.innerHTML = '';
+            answers.forEach(ans => {
+                const b = document.createElement('button');
+                b.className = "w-full text-left p-3.5 font-bold rounded-2xl border-2 border-[var(--border)] bg-[var(--bg-card)] hover:bg-black/5 dark:hover:bg-white/5 transition-all text-sm cursor-pointer duo-btn-bottom-shadow focus:outline-none quiz-option-btn text-[var(--text-main)]";
+                b.innerText = ans; b.onclick = () => checkQuizAnswer(b, ans, targetAns); container.appendChild(b);
+            });
+        }
+
+        function checkQuizAnswer(btn, selected, correct) {
+            const buttons = document.querySelectorAll('.quiz-option-btn'); buttons.forEach(b => b.disabled = true);
+            const fb = document.getElementById('quiz-feedback');
+            btn.style.boxShadow = "none"; btn.style.transform = "translateY(4px)";
+
+            if (selected === correct) {
+                btn.className = "w-full text-left p-3.5 font-bold rounded-2xl border-2 border-[#58cc02] bg-[#58cc02] text-white text-sm focus:outline-none";
+                fb.innerText = getRandomFeedback(correctFeedbacks); fb.className = "text-sm font-bold text-[#58cc02]";
+                gameState.quizScore += 10; gameState.streak++; if (gameState.streak >= 10) gameState.badges.streakMaster = true;
+                addXP(10); playGong(660, 0.2);
+            } else {
+                btn.className = "w-full text-left p-3.5 font-bold rounded-2xl border-2 border-[#ea2b2b] bg-[#ea2b2b] text-white text-sm focus:outline-none";
+                fb.innerText = getRandomFeedback(incorrectFeedbacks) + ` Correct: ${correct}`; fb.className = "text-sm font-bold text-[#ea2b2b]";
+                gameState.streak = 0; saveState(); updateDashboardUI(); playGong(330, 0.4);
+                buttons.forEach(b => { 
+                    if (b.innerText === correct) {
+                        b.className = "w-full text-left p-3.5 font-bold rounded-2xl border-2 border-[#58cc02] bg-[#58cc02] text-white text-sm focus:outline-none";
+                        b.style.boxShadow = "none"; b.style.transform = "none";
+                    }
+                });
+                if (!quizErrors.some(e => e.id === currentQuizItem.id)) { quizErrors.push(currentQuizItem); renderQuizErrors(); }
+            }
+            document.getElementById('quiz-next-btn').classList.remove('hidden');
+        }
+
+        function renderQuizErrors() {
+            const container = document.getElementById('quiz-error-list-box');
+            const ul = document.getElementById('quiz-error-ul'); ul.innerHTML = '';
+            if (quizErrors.length > 0) {
+                container.classList.remove('hidden');
+                quizErrors.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = "py-2 flex justify-between items-center text-sm font-bold";
+                    li.innerHTML = `<span class="text-[#ea2b2b]">${item.ger}</span> <span class="text-[var(--text-muted)]">➔</span> <span class="font-mono text-[#1cb0f6] bg-[var(--bg-panel)] px-2 py-0.5 rounded border-2 border-[var(--border)]">${item.eng}</span>`;
+                    ul.appendChild(li);
+                });
+            }
+        }
+
+        function nextQuizQuestion() { startQuiz(); }
+
+        let writeStack = []; let writeIndex = 0;
+
+        function initWriteMode() {
+            const pool = getVocabPool(currentUnit); if (!pool || pool.length === 0) return;
+            writeStack = [...pool].sort(() => Math.random() - 0.5).slice(0, 12);
+            writeIndex = 0;
+            loadWriteQuestion();
+        }
+
+        function loadWriteQuestion() {
+            const inputField = document.getElementById('write-input'); if(!inputField) return;
+            inputField.value = ''; inputField.disabled = false;
+            inputField.className = "w-full p-3.5 rounded-2xl border-2 border-[var(--border)] bg-[var(--bg-panel)] text-center font-bold text-xl text-[var(--text-main)] focus:outline-none focus:border-[#1cb0f6] transition-colors";
+            
+            document.getElementById('write-feedback').innerText = "Type your answer and press Enter...";
+            document.getElementById('write-feedback').className = "text-xs font-bold text-[var(--text-muted)]";
+            document.getElementById('write-next-btn').classList.add('hidden');
+            document.getElementById('write-progress').innerText = `Word: ${writeIndex + 1} / ${writeStack.length}`;
+
+            if (writeStack.length === 0) {
+                document.getElementById('write-question').innerText = "No data loaded";
+                return;
+            }
+            if (writeIndex >= writeStack.length) { initWriteMode(); return; }
+
+            const item = writeStack[writeIndex];
+            const qEl = document.getElementById('write-question'); const hEl = document.getElementById('write-hint');
+            
+            if (learningDirection === 'en-de') {
+                document.getElementById('write-mode-badge').innerText = `Writing (Unit ${currentUnit})`;
+                qEl.innerText = item.eng;
+                hEl.innerText = item.ctx && item.ctx !== "-" ? `Context: ${item.ctx}` : '';
+            } else {
+                document.getElementById('write-mode-badge').innerText = `Writing (Unit ${currentUnit})`;
+                qEl.innerText = item.ger;
+                hEl.innerText = "Check your spelling carefully!";
+            }
+            setTimeout(() => inputField.focus(), 50);
+        }
+
+        function setupWriteInputFieldListener() {
+            const field = document.getElementById('write-input');
+            if (field) {
+                field.addEventListener('keydown', function(event) {
+                    if (event.key === 'Enter') {
+                        event.stopPropagation();
+                        if (!document.getElementById('write-next-btn').classList.contains('hidden')) { nextWriteQuestion(); } 
+                        else { checkWriteAnswer(); }
+                    }
+                });
+            }
+        }
+
+        function cleanVerbPrefixes(str) {
+            return str.trim().toLowerCase().replace(/^(\(to\)\s+|to\s+)/i, '').trim();
+        }
+
+        function checkWriteAnswer() {
+            const inputField = document.getElementById('write-input');
+            let userInput = inputField.value.trim(); if (!userInput || inputField.disabled) return;
+
+            const item = writeStack[writeIndex]; inputField.disabled = true;
+            let solution = learningDirection === 'en-de' ? item.ger : item.eng;
+            let targetCleaned = cleanVerbPrefixes(solution);
+            let userCleaned = cleanVerbPrefixes(userInput);
+            const fb = document.getElementById('write-feedback');
+
+            if (userCleaned === targetCleaned) {
+                inputField.className = "w-full p-3.5 rounded-2xl border-2 border-[#58cc02] bg-[#58cc02] text-center font-bold text-xl text-white focus:outline-none";
+                fb.innerText = getRandomFeedback(correctFeedbacks); fb.className = "text-xs font-bold text-[#58cc02]";
+                gameState.streak++; addXP(15); playGong(660, 0.2);
+            } else {
+                inputField.className = "w-full p-3.5 rounded-2xl border-2 border-[#ea2b2b] bg-[#ea2b2b] text-center font-bold text-xl text-white focus:outline-none";
+                fb.innerText = getRandomFeedback(incorrectFeedbacks) + ` Solution: "${solution}"`; fb.className = "text-xs font-bold text-[#ea2b2b]";
+                gameState.streak = 0; saveState(); updateDashboardUI(); playGong(330, 0.4);
+                if (!writeErrors.some(e => e.id === item.id)) { writeErrors.push(item); renderWriteErrors(); }
+            }
+            document.getElementById('write-next-btn').classList.remove('hidden');
+        }
+
+        function renderWriteErrors() {
+            const container = document.getElementById('write-error-list-box');
+            const ul = document.getElementById('write-error-ul'); ul.innerHTML = '';
+            if (writeErrors.length > 0) {
+                container.classList.remove('hidden');
+                writeErrors.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = "py-2 flex justify-between items-center text-sm font-bold";
+                    li.innerHTML = `<span class="text-[#ff9600]">${item.ger}</span> <span class="text-[var(--text-muted)]">➔</span> <span class="font-mono text-[#1cb0f6] bg-[var(--bg-panel)] px-2 py-0.5 rounded border-2 border-[var(--border)]">${item.eng}</span>`;
+                    ul.appendChild(li);
+                });
+            }
+        }
+
+        function nextWriteQuestion() { writeIndex++; loadWriteQuestion(); }
+        function toggleTheme() { const h = document.documentElement; const next = h.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'; h.setAttribute('data-theme', next); localStorage.setItem('duo_theme', next); }
+        
+        function toggleDirection() { 
+            learningDirection = (learningDirection === 'de-en') ? 'en-de' : 'de-en'; 
+            document.getElementById('direction-label-text').innerText = (learningDirection === 'de-en') ? 'DE ➔ EN' : 'EN ➔ DE'; 
+            triggerInterfaceReload(); 
+            playGong(700, 0.05); 
+        }
+        
+        function toggleMenu(event) { event.stopPropagation(); document.getElementById('menu-dropdown').classList.toggle('hidden'); }
+        
+        function loadSavedState() { 
+            const stored = localStorage.getItem('vocab_trainer_pro_ux_v6'); 
+            if (stored) { 
+                gameState = JSON.parse(stored); 
+                if (gameState.quizScore === undefined) gameState.quizScore = 0; 
+            } 
+            updateDashboardUI(); 
+        }
+        
+        function saveState() { localStorage.setItem('vocab_trainer_pro_ux_v6', JSON.stringify(gameState)); }
+        
+        function addXP(amount) { 
+            gameState.xp += amount; 
+            let targetXP = gameState.level * 100; 
+            if (gameState.xp >= targetXP) { 
+                gameState.xp -= targetXP; 
+                gameState.level++; 
+                playGong(880, 0.6); 
+            } 
+            saveState(); 
+            updateDashboardUI(); 
+        }
+        
+        function getRandomFeedback(list) { return list[Math.floor(Math.random() * list.length)]; }
+
+        function updateDashboardUI() {
+            document.getElementById('user-level').innerText = gameState.level;
+            document.getElementById('user-xp').innerText = gameState.xp;
+            let targetXP = gameState.level * 100;
+            document.getElementById('next-level-xp').innerText = targetXP;
+            document.getElementById('xp-bar-fill').style.width = ((gameState.xp / targetXP) * 100) + '%';
+            document.getElementById('streak-counter').innerText = gameState.streak;
+            document.getElementById('quiz-score').innerText = "Quiz Score: " + gameState.quizScore;
+
+            const bFirst = document.getElementById('badge-first-step');
+            const bStreak = document.getElementById('badge-streak');
+            const bClear = document.getElementById('badge-clear');
+
+            if (gameState.badges.firstStep) bFirst.classList.remove('grayscale', 'opacity-40');
+            if (gameState.badges.streakMaster) bStreak.classList.remove('grayscale', 'opacity-40');
+            if (gameState.badges.unitClear) bClear.classList.remove('grayscale', 'opacity-40');
+        }
+
+        function confirmReset() {
+            if (confirm("⚠️ Clear progress?")) {
+                localStorage.removeItem('vocab_trainer_pro_ux_v6');
+                gameState = JSON.parse(JSON.stringify(defaultState)); saveState(); updateDashboardUI(); resetCurrentUnitStack(); clearErrorLists();
+                if(activeMode === 'quiz') startQuiz(); if(activeMode === 'write') initWriteMode();
+            }
+        }
+
+        function clearErrorLists() { 
+            quizErrors = []; writeErrors = []; 
+            document.getElementById('quiz-error-list-box').classList.add('hidden'); 
+            document.getElementById('write-error-list-box').classList.add('hidden'); 
+        }
+
+        function playAudio(e) { 
+            if (e) e.stopPropagation(); 
+            if (activeStack.length === 0) return; 
+            const u = new SpeechSynthesisUtterance(activeStack[0].eng.replace(/^\(to\)\s+/i, '')); 
+            u.lang = 'en-GB'; 
+            window.speechSynthesis.speak(u); 
+        }
+        
+        function playQuizAudio() { 
+            if (!currentQuizItem) return; 
+            const u = new SpeechSynthesisUtterance(currentQuizItem.eng.replace(/^\(to\)\s+/i, '')); 
+            u.lang = 'en-GB'; 
+            window.speechSynthesis.speak(u); 
+        }
+
+        function playGong(freq, dur) {
+            try {
+                const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
+                const c = new AC(); const o = c.createOscillator(); const g = c.createGain();
+                o.type = 'sine'; o.frequency.setValueAtTime(freq, c.currentTime); 
+                g.gain.setValueAtTime(0.02, c.currentTime); g.gain.exponentialRampToValueAtTime(0.0001, c.currentTime + dur); 
+                o.connect(g); g.connect(c.destination); o.start(); o.stop(c.currentTime + dur);
+            } catch (e) {}
+        }
+
+        function setupGlobalKeyListeners() {
+            window.addEventListener('keydown', function(e) {
+                if (activeMode === 'flashcard' && !isTransitioning) {
+                    if (e.key === "ArrowRight") { e.preventDefault(); handleVocabKnowledge(true); }
+                    if (e.key === "ArrowLeft") { e.preventDefault(); handleVocabKnowledge(false); }
+                    if (e.key === " " || e.code === "Space") { e.preventDefault(); toggleCardFlip(); }
+                }
+            });
+        }
+
+        function downloadPDF(mode) {
+            const listToPrint = mode === 'quiz' ? quizErrors : writeErrors; if (listToPrint.length === 0) return;
+            const printArea = document.getElementById('print-section');
+            let htmlContent = `<div style="font-family: Arial, sans-serif; padding: 20px;"><h2>Review List - Unit ${currentUnit}</h2><table style="width:100%; border-collapse:collapse;">`;
+            listToPrint.forEach(item => {
+                htmlContent += `<tr><td style="border:1px solid #aaa; padding:10px;"><b>${item.ger}</b></td><td style="border:1px solid #aaa; padding:10px; font-family:monospace;">${item.eng}</td><td style="border:1px solid #aaa; padding:10px; color:#ccc;">__________________</td></tr>`;
+            });
+            htmlContent += `</table></div>`; printArea.innerHTML = htmlContent;
+            setTimeout(() => window.print(), 150);
+        }
+    </script>
+</body>
+</html>
