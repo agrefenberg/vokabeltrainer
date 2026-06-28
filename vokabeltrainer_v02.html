@@ -3,18 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Vocabulary Trainer Pro (v02)</title>
+    <title>Vocabulary Trainer Pro (v03)</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
     <script>
         // 🏫 Globaler Daten-Speicher für alle Klassenstufen (5 bis 10)
         window.vocabStorage = {
-            5: {},
-            6: {},
-            7: {},
-            8: {},
-            9: {},
-            10: {}
+            5: {}, 6: {}, 7: {}, 8: {}, 9: {}, 10: {}
         };
     </script>
 
@@ -74,7 +69,7 @@
     <script>window.vocabStorage[8][4] = typeof e8u4_data !== 'undefined' ? e8u4_data : []; e8u4_data = undefined;</script>
     <script src="e8u5_vocab.js"></script>
     <script>window.vocabStorage[8][5] = typeof e8u5_data !== 'undefined' ? e8u5_data : []; e8u5_data = undefined;</script>
-    <!-- Klasse 9 Imports -->
+    
     <script src="e9u1_vocab.js"></script>
     <script>window.vocabStorage[9][1] = typeof e9u1_data !== 'undefined' ? e9u1_data : []; e9u1_data = undefined;</script>
     <script src="e9u2_vocab.js"></script>
@@ -83,20 +78,13 @@
     <script>window.vocabStorage[9][3] = typeof e9u3_data !== 'undefined' ? e9u3_data : []; e9u3_data = undefined;</script>
     <script src="e9u4_vocab.js"></script>
     <script>window.vocabStorage[9][4] = typeof e9u4_data !== 'undefined' ? e9u4_data : []; e9u4_data = undefined;</script>
-    <!-- Integration für Klasse 10 Unit 1 -->
+    
     <script src="e10u1_vocab.js"></script>
-    <script>
-        if (!window.vocabStorage[10]) window.vocabStorage[10] = {};
-        window.vocabStorage[10][1] = typeof e10u1_data !== 'undefined' ? e10u1_data : []; 
-        e10u1_data = undefined;
-    </script>
-    <!-- Integration für Klasse 10 Unit 2 -->
+    <script>if (!window.vocabStorage[10]) window.vocabStorage[10] = {}; window.vocabStorage[10][1] = typeof e10u1_data !== 'undefined' ? e10u1_data : []; e10u1_data = undefined;</script>
     <script src="e10u2_vocab.js"></script>
     <script>window.vocabStorage[10][2] = typeof e10u2_data !== 'undefined' ? e10u2_data : []; e10u2_data = undefined;</script>
-    <!-- Integration für Klasse 10 Unit 3 -->
     <script src="e10u3_vocab.js"></script>
     <script>window.vocabStorage[10][3] = typeof e10u3_data !== 'undefined' ? e10u3_data : []; e10u3_data = undefined;</script>
-    <!-- Integration für Klasse 10 Unit 4 -->
     <script src="e10u4_vocab.js"></script>
     <script>window.vocabStorage[10][4] = typeof e10u4_data !== 'undefined' ? e10u4_data : []; e10u4_data = undefined;</script>
 
@@ -107,7 +95,7 @@
     </script>
     
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght=400;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
 
         :root {
             --bg-main: #ffffff;
@@ -204,11 +192,27 @@
             filter: blur(0px);
         }
 
-        /* ==========================================
-           🎬 GAMIFICATION ANIMATIONEN (CSS)
-           ========================================== */
-        
-        /* Streak Flammen-Explosion */
+        /* Speed Challenge Drag Elements */
+        .speed-item {
+            touch-action: none;
+            user-select: none;
+            cursor: grab;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .speed-item:active { cursor: grabbing; }
+        .speed-dropzone {
+            transition: all 0.2s;
+        }
+
+        /* Modals & Pop Animations */
+        @keyframes modal-pop {
+            0% { transform: scale(0.85); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-modal-pop {
+            animation: modal-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
         @keyframes bounce-pop {
             0% { transform: scale(1); }
             30% { transform: scale(1.6) rotate(-10deg); filter: drop-shadow(0 0 10px #ff9600); }
@@ -220,7 +224,6 @@
             animation: bounce-pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        /* Schwebender XP-Indikator */
         @keyframes float-up-fade {
             0% { transform: translateY(0); opacity: 0; }
             20% { opacity: 1; }
@@ -230,10 +233,9 @@
             animation: float-up-fade 0.9s ease-out forwards;
         }
 
-        /* Konfetti-Partikel für Unit Clear */
         @keyframes confetti-fall {
             0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(300px) rotate(360deg); opacity: 0; }
+            100% { transform: translateY(400px) rotate(360deg); opacity: 0; }
         }
         .confetti {
             position: absolute;
@@ -260,7 +262,7 @@
     <div class="w-full max-w-2xl mx-auto flex flex-col justify-between flex-grow gap-4 no-print relative">
         
         <div class="w-full flex justify-between items-center border-b-2 border-[var(--border)] pb-2">
-            <h1 class="text-xl md:text-2xl font-extrabold tracking-tight">🎯 Vocabulary Trainer Pro v2</h1>
+            <h1 class="text-xl md:text-2xl font-extrabold tracking-tight">🎯 Vocabulary Trainer Pro v3</h1>
         </div>
 
         <header class="w-full flex items-center justify-between gap-3 relative mt-1 flex-wrap">
@@ -269,10 +271,11 @@
                     ☰
                 </button>
                 
-                <div id="menu-dropdown" class="absolute left-0 top-12 w-48 bg-[var(--bg-card)] border-2 border-[var(--border)] rounded-2xl hidden z-50 shadow-lg overflow-hidden">
+                <div id="menu-dropdown" class="absolute left-0 top-12 w-58 bg-[var(--bg-card)] border-2 border-[var(--border)] rounded-2xl hidden z-50 shadow-lg overflow-hidden">
                     <button onclick="selectMode('flashcard')" class="w-full text-left px-4 py-3 text-sm font-bold hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer flex items-center gap-2">🎴 Flashcards</button>
                     <button onclick="selectMode('quiz')" class="w-full text-left px-4 py-3 text-sm font-bold hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer flex items-center gap-2">❓ Quiz Mode</button>
                     <button onclick="selectMode('write')" class="w-full text-left px-4 py-3 text-sm font-bold hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer flex items-center gap-2">✍️ Writing Challenge</button>
+                    <button onclick="selectMode('speed')" class="w-full text-left px-4 py-3 text-sm font-bold hover:bg-black/5 dark:hover:bg-white/5 transition-colors cursor-pointer flex items-center gap-2 text-[#ff9600]">⏱️ Speed Challenge</button>
                 </div>
             </div>
 
@@ -408,22 +411,39 @@
                     <ul id="write-error-ul" class="text-sm divide-y divide-[var(--border)]/30 max-h-[150px] overflow-y-auto"></ul>
                 </div>
             </div>
+
+            <!-- SPEED CHALLENGE INTERFACE -->
+            <div id="speed-interface" class="w-full max-w-lg flex flex-col gap-4 hidden">
+                <div class="duo-panel p-5 md:p-6 flex flex-col w-full shadow-sm relative">
+                    <div class="flex justify-between items-center border-b-2 border-[var(--border)] pb-2 mb-4">
+                        <span class="text-xs font-extrabold tracking-wider uppercase text-[#ff9600]">⏱️ Speed Challenge</span>
+                        <div class="text-sm font-extrabold text-[#ea2b2b] bg-red-500/10 px-3 py-1 rounded-full">Zeit: <span id="speed-timer">30</span>s</div>
+                    </div>
+                    
+                    <div id="speed-start-screen" class="text-center py-6 flex flex-col items-center gap-4">
+                        <p class="text-sm font-bold text-[var(--text-muted)] max-w-xs">Ordne in 30 Sekunden so viele Vokabel-Paare per Drag-and-Drop richtig zu wie möglich!</p>
+                        <button onclick="startSpeedChallenge()" class="px-6 py-3 bg-[#ff9600] text-white font-extrabold rounded-2xl text-sm duo-btn-bottom-shadow shadow-[#cc7800]">Challenge Starten 🚀</button>
+                    </div>
+
+                    <div id="speed-game-screen" class="hidden grid grid-cols-2 gap-4">
+                        <div class="flex flex-col gap-2" id="speed-source-column"></div>
+                        <div class="flex flex-col gap-2" id="speed-target-column"></div>
+                    </div>
+                </div>
+            </div>
         </main>
 
         <!-- STATS -->
         <section class="w-full duo-panel p-4 grid grid-cols-3 gap-4 items-center shadow-sm relative">
-            <!-- Schwebender XP-Indikator Anchor -->
             <div class="text-left flex flex-col justify-center relative" id="xp-container-anchor">
                 <div class="text-xs font-extrabold text-[#ff9600] uppercase tracking-wider">Level <span id="user-level">1</span></div>
                 <div class="text-[10px] font-bold text-[var(--text-muted)] mt-0.5"><span id="user-xp">0</span> / <span id="next-level-xp">100</span> XP</div>
             </div>
             <div class="w-full bg-[var(--border)] h-3 rounded-full overflow-hidden max-w-[240px] mx-auto">
-                <!-- Weiche Transition für geschmeidiges Auffüllen -->
                 <div id="xp-bar-fill" class="bg-[#58cc02] h-full transition-all duration-500 ease-out rounded-full" style="width: 0%"></div>
             </div>
             <div class="text-right flex items-center justify-end text-sm">
                 <span class="text-xs text-[var(--text-muted)] font-bold mr-1.5">Streak:</span> 
-                <!-- Die animierte Flamme -->
                 <span id="streak-flame-wrapper" class="inline-block transition-transform duration-100 font-extrabold text-[#ff9600]">
                     <span id="flame-emoji">🔥</span> <span id="streak-counter">0</span>
                 </span>
@@ -432,18 +452,44 @@
 
         <!-- MEDALS SHOWCASE -->
         <div class="w-full duo-panel p-3 bg-[var(--bg-panel)] flex flex-col gap-1.5">
-            <span class="text-[10px] font-extrabold text-[var(--text-muted)] uppercase tracking-wider">🏅 Freigeschaltete Unit-Medaillen (Diese Klasse)</span>
+            <span class="text-[10px] font-extrabold text-[var(--text-muted)] uppercase tracking-wider" id="medals-box-title">🏅 Freigeschaltete Unit-Medaillen (Diese Klasse)</span>
             <div id="medals-list" class="flex gap-2 flex-wrap text-lg"></div>
         </div>
 
-        <!-- BADGES -->
+        <!-- BADGES & RESET -->
         <div class="w-full flex items-center justify-between bg-[var(--bg-panel)] border-2 border-[var(--border)] px-4 py-3 rounded-2xl text-xs font-bold text-[var(--text-muted)]">
             <div class="flex items-center gap-6">
                 <span id="badge-first-step" class="filter grayscale opacity-40">🥉 First Steps</span>
                 <span id="badge-streak" class="filter grayscale opacity-40">🥈 Streak Master</span>
                 <span id="badge-clear" class="filter grayscale opacity-40">🥇 Unit Clearer</span>
             </div>
-            <button onclick="confirmReset()" class="text-xs font-bold text-[#ea2b2b] hover:text-red-600 transition-colors cursor-pointer">🔄 Reset</button>
+            <button onclick="openResetModal()" class="text-xs font-bold text-[#ea2b2b] hover:text-red-600 transition-colors cursor-pointer">🔄 Reset</button>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         👥 GAMIFICATION & CUSTOM MODALS
+         ========================================== -->
+    <!-- Global Reward Modal -->
+    <div id="reward-modal" class="fixed inset-0 bg-black/60 z-99 flex items-center justify-center p-4 hidden">
+        <div class="bg-[var(--bg-card)] border-2 border-[var(--border)] w-full max-w-sm rounded-3xl p-6 text-center shadow-2xl transform scale-95 opacity-0 transition-all duration-300 animate-modal-pop">
+            <div id="reward-icon" class="text-5xl mb-3 animate-bounce">🎉</div>
+            <h3 id="reward-title" class="text-xl font-extrabold text-[var(--text-main)] mb-2">Meilenstein erreicht!</h3>
+            <p id="reward-desc" class="text-sm font-semibold text-[var(--text-muted)] mb-5">Du bist fantastisch vorangekommen.</p>
+            <button onclick="closeRewardModal()" class="w-full h-11 bg-[#58cc02] text-white font-extrabold rounded-2xl shadow-[0_4px_0_#46a302] active:translate-y-1 active:shadow-none transition-all cursor-pointer">Weiter (Enter)</button>
+        </div>
+    </div>
+
+    <!-- Custom Duolingo-Style Reset Confirmation Modal -->
+    <div id="reset-modal" class="fixed inset-0 bg-black/60 z-99 flex items-center justify-center p-4 hidden">
+        <div class="bg-[var(--bg-card)] border-2 border-[var(--border)] w-full max-w-xs rounded-3xl p-5 text-center shadow-2xl animate-modal-pop">
+            <div class="text-4xl mb-2">⚠️</div>
+            <h3 class="text-lg font-extrabold text-[var(--text-main)] mb-1">Fortschritt löschen?</h3>
+            <p class="text-xs font-semibold text-[var(--text-muted)] mb-4">Alle deine XP, Level und mühsam erarbeiteten Streaks gehen unwiderruflich verloren!</p>
+            <div class="flex flex-col gap-2">
+                <button onclick="executeReset()" class="w-full h-10 bg-[#ea2b2b] text-white font-extrabold rounded-xl shadow-[0_4px_0_#b91c1c] active:translate-y-1 active:shadow-none transition-all cursor-pointer text-xs">Ja, alles löschen</button>
+                <button onclick="closeResetModal()" class="w-full h-10 bg-[var(--bg-panel)] border-2 border-[var(--border)] text-[var(--text-main)] font-extrabold rounded-xl text-xs hover:bg-black/5 transition-colors cursor-pointer">Abbrechen</button>
+            </div>
         </div>
     </div>
 
@@ -457,6 +503,12 @@
         let currentQuizItem = null; let isTransitioning = false;
         let quizErrors = []; let writeErrors = [];
 
+        // Speed Challenge States
+        let speedTimerInterval = null;
+        let speedTimeLeft = 30;
+        let speedActivePairs = [];
+        let selectedSpeedSourceId = null;
+
         window.onload = function() {
             if (localStorage.getItem('duo_theme') === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
             loadSavedState();
@@ -468,18 +520,15 @@
         };
 
         // ==========================================
-        // 🎬 ANIMATIONS-HELPER (JAVASCRIPT-TRIGGER)
+        // 🎬 ANIMATIONS- & MODAL-HELPER
         // ==========================================
-        
-        // 1. Streak-Flamme aufleuchten lassen
         function triggerFlameAnimation() {
             const wrapper = document.getElementById('streak-flame-wrapper');
             wrapper.classList.remove('animate-streak-pop');
-            void wrapper.offsetWidth; // DOM-Reflow erzwingen, um Animation zurückzusetzen
+            void wrapper.offsetWidth;
             wrapper.classList.add('animate-streak-pop');
         }
 
-        // 2. Schwebende "+XP" Text-Zahl erzeugen
         function triggerXpFloatAnimation(amount) {
             const anchor = document.getElementById('xp-container-anchor');
             const floater = document.createElement('span');
@@ -489,7 +538,6 @@
             setTimeout(() => floater.remove(), 1000);
         }
 
-        // 3. Konfetti sprühen lassen
         function triggerConfettiBurst() {
             const stage = document.getElementById('main-content-stage');
             const colors = ['#58cc02', '#1cb0f6', '#ff9600', '#ffc300', '#ff5733'];
@@ -498,11 +546,40 @@
                 conf.className = "confetti";
                 conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 conf.style.left = Math.random() * 90 + 5 + '%';
-                conf.style.top = Math.random() * 30 + '%';
-                conf.style.animationDelay = Math.random() * 0.4 + 's';
+                conf.style.top = Math.random() * 40 + '%';
+                conf.style.animationDelay = Math.random() * 0.3 + 's';
                 stage.appendChild(conf);
                 setTimeout(() => conf.remove(), 2000);
             }
+        }
+
+        function showRewardModal(icon, title, desc) {
+            document.getElementById('reward-icon').innerText = icon;
+            document.getElementById('reward-title').innerText = title;
+            document.getElementById('reward-desc').innerText = desc;
+            document.getElementById('reward-modal').classList.remove('hidden');
+            playGong(587.33, 0.4);
+        }
+
+        function closeRewardModal() {
+            document.getElementById('reward-modal').classList.add('hidden');
+        }
+
+        function openResetModal() {
+            document.getElementById('reset-modal').classList.remove('hidden');
+        }
+
+        function closeResetModal() {
+            document.getElementById('reset-modal').classList.add('hidden');
+        }
+
+        function executeReset() {
+            localStorage.removeItem('vocab_trainer_pro_ux_v6');
+            gameState = { ...defaultState, badges: { ...defaultState.badges }, clearedUnits: {} };
+            saveState();
+            updateDashboardUI();
+            closeResetModal();
+            triggerInterfaceReload();
         }
 
         function buildUnitDropdown() {
@@ -536,6 +613,11 @@
 
         function triggerInterfaceReload() {
             isTransitioning = false;
+            clearInterval(speedTimerInterval);
+            document.getElementById('speed-start-screen').classList.remove('hidden');
+            document.getElementById('speed-game-screen').classList.add('hidden');
+            document.getElementById('speed-timer').innerText = "30";
+
             if (activeMode === 'flashcard') resetCurrentUnitStack(); 
             else if (activeMode === 'quiz') startQuiz(); 
             else if (activeMode === 'write') initWriteMode();
@@ -546,11 +628,15 @@
             document.getElementById('flashcard-interface').classList.add('hidden');
             document.getElementById('quiz-interface').classList.add('hidden');
             document.getElementById('write-interface').classList.add('hidden');
+            document.getElementById('speed-interface').classList.add('hidden');
             clearErrorLists();
             document.getElementById(`${mode}-interface`).classList.remove('hidden');
             triggerInterfaceReload();
         }
 
+        // ==========================================
+        // 🎴 FLASHCARD ENGINE
+        // ==========================================
         function resetCurrentUnitStack() {
             const pool = getVocabPool(currentGrade, currentUnit);
             if (!pool || pool.length === 0) {
@@ -585,7 +671,8 @@
                 let firstClear = !gameState.clearedUnits[currentGrade].includes(currentUnit);
                 if (firstClear) {
                     gameState.clearedUnits[currentGrade].push(currentUnit);
-                    triggerConfettiBurst(); // 🎉 Konfetti-Belohnung!
+                    triggerConfettiBurst();
+                    showRewardModal("🥇", "Unit Abgeschlossen!", `Hervorragend! Du hast Medaille U${currentUnit} für Klasse ${currentGrade} freigeschaltet.`);
                 }
                 if (!gameState.badges.unitClear && poolMax > 0) { gameState.badges.unitClear = true; }
                 addXP(50); 
@@ -614,26 +701,30 @@
             if (activeStack.length === 0 || isTransitioning) return;
             isTransitioning = true; const card = document.getElementById('vocab-card-container'); const item = activeStack.shift();
             if (known) {
-                card.classList.add('card-success'); playGong(523.25, 0.15); gameState.streak++;
-                triggerFlameAnimation(); // 🔥
+                card.classList.add('card-success'); playGong(523.25, 0.15); 
+                updateStreakCounter(gameState.streak + 1);
                 if (!gameState.badges.firstStep) gameState.badges.firstStep = true;
                 if (gameState.streak >= 10) gameState.badges.streakMaster = true;
                 addXP(10); 
                 setTimeout(() => { card.style.opacity = "0"; learnedCards.push(item); setTimeout(() => { isTransitioning = false; card.style.opacity="1"; loadVocabCard(); }, 200); }, 250);
             } else {
-                card.classList.add('card-fail'); playGong(293.66, 0.25); gameState.streak = 0; saveState(); updateDashboardUI();
+                card.classList.add('card-fail'); playGong(293.66, 0.25); 
+                updateStreakCounter(0); saveState(); updateDashboardUI();
                 setTimeout(() => { activeStack.push(item); setTimeout(() => { isTransitioning = false; loadVocabCard(); }, 200); }, 250);
             }
         }
 
+        // ==========================================
+        // ❓ QUIZ ENGINE
+        // ==========================================
         function startQuiz() {
             const pool = getVocabPool(currentGrade, currentUnit); if (!pool || pool.length === 0) return;
             currentQuizItem = pool[Math.floor(Math.random() * pool.length)];
-            document.getElementById('quiz-feedback').innerText = "Select answer:"; document.getElementById('quiz-next-btn').classList.add('hidden');
+            document.getElementById('quiz-feedback').innerText = "Wähle die Antwort:"; document.getElementById('quiz-next-btn').classList.add('hidden');
 
             let targetAns = (learningDirection === 'en-de') ? currentQuizItem.ger : currentQuizItem.eng;
             document.getElementById('quiz-question').innerText = (learningDirection === 'en-de') ? currentQuizItem.eng : currentQuizItem.ger;
-            document.getElementById('quiz-mode-badge').innerText = `Quiz (Grade ${currentGrade})`;
+            document.getElementById('quiz-mode-badge').innerText = `Quiz (Klasse ${currentGrade})`;
 
             const quizAudioBtn = document.getElementById('quiz-audio-btn');
             if (learningDirection === 'en-de') { quizAudioBtn.classList.remove('hidden'); } 
@@ -658,13 +749,13 @@
             document.querySelectorAll('.quiz-option-btn').forEach(b => b.disabled = true);
             if (selected === correct) {
                 btn.className = "w-full text-left p-3.5 font-bold rounded-2xl border-2 border-[#58cc02] bg-[#58cc02] text-white text-sm";
-                gameState.quizScore += 10; gameState.streak++; 
-                triggerFlameAnimation(); // 🔥
+                gameState.quizScore += 10; 
+                updateStreakCounter(gameState.streak + 1);
                 addXP(20); 
                 playGong(660, 0.2);
             } else {
                 btn.className = "w-full text-left p-3.5 font-bold rounded-2xl border-2 border-[#ea2b2b] bg-[#ea2b2b] text-white text-sm";
-                gameState.streak = 0; playGong(330, 0.4);
+                updateStreakCounter(0); playGong(330, 0.4);
                 document.querySelectorAll('.quiz-option-btn').forEach(b => { if(b.innerText === correct) b.className = "w-full text-left p-3.5 font-bold rounded-2xl border-2 border-[#58cc02] bg-[#58cc02] text-white text-sm"; });
                 if (!quizErrors.some(e => e.id === currentQuizItem.id)) { quizErrors.push(currentQuizItem); renderQuizErrors(); }
             }
@@ -683,6 +774,9 @@
 
         function nextQuizQuestion() { startQuiz(); }
 
+        // ==========================================
+        // ✍️ WRITING CHALLENGE ENGINE
+        // ==========================================
         let writeStack = []; let writeIndex = 0;
         function initWriteMode() {
             const pool = getVocabPool(currentGrade, currentUnit); if (!pool || pool.length === 0) return;
@@ -693,13 +787,14 @@
             const inputField = document.getElementById('write-input'); if(!inputField) return;
             inputField.value = ''; inputField.disabled = false; inputField.focus();
             inputField.className = "w-full p-3.5 rounded-2xl border-2 border-[var(--border)] bg-[var(--bg-panel)] text-center font-bold text-xl text-[var(--text-main)] focus:outline-none";
-            document.getElementById('write-feedback').innerText = "Press Enter...";
+            document.getElementById('write-feedback').innerText = "Drücke Enter...";
             document.getElementById('write-next-btn').classList.add('hidden');
-            document.getElementById('write-progress').innerText = `Word: ${writeIndex + 1} / ${writeStack.length}`;
-            document.getElementById('write-mode-badge').innerText = `Writing (Grade ${currentGrade})`;
+            document.getElementById('write-progress').innerText = `Wort: ${writeIndex + 1} / ${writeStack.length}`;
+            document.getElementById('write-mode-badge').innerText = `Writing (Klasse ${currentGrade})`;
 
             if (writeIndex >= writeStack.length) { 
-                triggerConfettiBurst(); // 🎉 Belohnung am Ende des Schreibsets
+                triggerConfettiBurst();
+                showRewardModal("✍️", "Schreibset beendet!", "Du hast die Schreib-Challenge perfekt abgeschlossen und wertvolle Erfahrung gesammelt.");
                 initWriteMode(); 
                 return; 
             }
@@ -716,12 +811,12 @@
                 const cleanCtx = item.ctx.toLowerCase();
                 
                 if (cleanCtx.includes(solutionWord) && solutionWord.length > 2) {
-                    hintTarget.innerHTML = `<span class="text-[11px]">👁️ Hint (Hover to reveal):</span> <span class="blurred-hint bg-black/10 dark:bg-white/10 px-1.5 py-0.5 rounded text-xs italic">${item.ctx}</span>`;
+                    hintTarget.innerHTML = `<span class="text-[11px]">👁️ Hinweis (Maus drüberhalten):</span> <span class="blurred-hint bg-black/10 dark:bg-white/10 px-1.5 py-0.5 rounded text-xs italic">${item.ctx}</span>`;
                 } else {
-                    hintTarget.innerHTML = `<span id="write-hint" class="text-xs font-bold text-[var(--text-muted)]">Hint: ${item.ctx}</span>`;
+                    hintTarget.innerHTML = `<span id="write-hint" class="text-xs font-bold text-[var(--text-muted)]">Hinweis: ${item.ctx}</span>`;
                 }
             } else {
-                hintTarget.innerHTML = `<span id="write-hint" class="text-xs font-bold text-[var(--text-muted)]">Check spelling carefully!</span>`;
+                hintTarget.innerHTML = `<span id="write-hint" class="text-xs font-bold text-[var(--text-muted)]">Achte penibel auf die Rechtschreibung!</span>`;
             }
         }
 
@@ -732,14 +827,13 @@
 
             if (userInput.toLowerCase().replace(/^(\(to\)\s+|to\s+)/i, '').trim() === solution.toLowerCase().replace(/^(\(to\)\s+|to\s+)/i, '').trim()) {
                 inputField.className = "w-full p-3.5 rounded-2xl border-2 border-[#58cc02] bg-[#58cc02] text-center text-white font-bold text-xl";
-                gameState.streak++; 
-                triggerFlameAnimation(); // 🔥
+                updateStreakCounter(gameState.streak + 1);
                 addXP(30); 
                 playGong(660, 0.2);
             } else {
                 inputField.className = "w-full p-3.5 rounded-2xl border-2 border-[#ea2b2b] bg-[#ea2b2b] text-center text-white font-bold text-xl";
-                document.getElementById('write-feedback').innerText = `Correct: "${solution}"`;
-                gameState.streak = 0; playGong(330, 0.4);
+                document.getElementById('write-feedback').innerText = `Richtig: "${solution}"`;
+                updateStreakCounter(0); playGong(330, 0.4);
                 if (!writeErrors.some(e => e.id === item.id)) { writeErrors.push(item); renderWriteErrors(); }
             }
             saveState(); updateDashboardUI(); document.getElementById('write-next-btn').classList.remove('hidden');
@@ -754,7 +848,175 @@
         }
 
         function nextWriteQuestion() { writeIndex++; loadWriteQuestion(); }
-        
+
+        // ==========================================
+        // ⏱️ SPEED CHALLENGE ENGINE (DRAG & DROP)
+        // ==========================================
+        function startSpeedChallenge() {
+            const pool = getVocabPool(currentGrade, currentUnit);
+            if (!pool || pool.length < 4) {
+                alert("Nicht genügend Vokabeln in dieser Unit für die Speed Challenge!");
+                return;
+            }
+            document.getElementById('speed-start-screen').classList.add('hidden');
+            document.getElementById('speed-game-screen').classList.remove('hidden');
+            
+            speedTimeLeft = 30;
+            document.getElementById('speed-timer').innerText = speedTimeLeft;
+            
+            speedTimerInterval = setInterval(() => {
+                speedTimeLeft--;
+                document.getElementById('speed-timer').innerText = speedTimeLeft;
+                if (speedTimeLeft <= 0) {
+                    clearInterval(speedTimerInterval);
+                    triggerConfettiBurst();
+                    showRewardModal("⏳", "Zeit abgelaufen!", "Klasse Leistung! Du hast wertvolle Extrapunkte in der Speed-Challenge erzielt.");
+                    triggerInterfaceReload();
+                }
+            }, 1000);
+
+            generateSpeedPairs();
+        }
+
+        function generateSpeedPairs() {
+            const pool = getVocabPool(currentGrade, currentUnit);
+            let shuffled = [...pool].sort(() => Math.random() - 0.5).slice(0, 4);
+            speedActivePairs = shuffled;
+
+            const sourceCol = document.getElementById('speed-source-column');
+            const targetCol = document.getElementById('speed-target-column');
+            sourceCol.innerHTML = '';
+            targetCol.innerHTML = '';
+
+            let sources = [];
+            let targets = [];
+
+            shuffled.forEach(item => {
+                let srcText = (learningDirection === 'en-de') ? item.eng : item.ger;
+                let trgText = (learningDirection === 'en-de') ? item.ger : item.eng;
+                sources.push({ id: item.id, text: srcText });
+                targets.push({ id: item.id, text: trgText });
+            });
+
+            // Unabhängig voneinander mischen
+            sources.sort(() => Math.random() - 0.5);
+            targets.sort(() => Math.random() - 0.5);
+
+            sources.forEach(s => {
+                const div = document.createElement('div');
+                div.className = "p-3 bg-[var(--bg-panel)] border-2 border-[var(--border)] rounded-xl font-bold text-sm text-center speed-item duo-btn-bottom-shadow select-none";
+                div.innerText = s.text;
+                div.id = `speed-src-${s.id}`;
+                div.draggable = true;
+                div.addEventListener('dragstart', (e) => {
+                    selectedSpeedSourceId = s.id;
+                    e.dataTransfer.setData('text/plain', s.id);
+                });
+                // Klick-Support für Mobile
+                div.onclick = () => {
+                    if (selectedSpeedSourceId === s.id) {
+                        div.classList.remove('border-[#1cb0f6]', 'bg-[#1cb0f6]/10');
+                        selectedSpeedSourceId = null;
+                    } else {
+                        document.querySelectorAll('#speed-source-column .speed-item').forEach(el => el.classList.remove('border-[#1cb0f6]', 'bg-[#1cb0f6]/10'));
+                        div.classList.add('border-[#1cb0f6]', 'bg-[#1cb0f6]/10');
+                        selectedSpeedSourceId = s.id;
+                    }
+                };
+                sourceCol.appendChild(div);
+            });
+
+            targets.forEach(t => {
+                const div = document.createElement('div');
+                div.className = "p-3 bg-[var(--bg-card)] border-2 border-[var(--border)] rounded-xl font-bold text-sm text-center speed-dropzone duo-btn-bottom-shadow select-none cursor-pointer";
+                div.innerText = t.text;
+                div.id = `speed-trg-${t.id}`;
+                
+                // Drag & Drop Events
+                div.addEventListener('dragover', (e) => e.preventDefault());
+                div.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const draggedId = e.dataTransfer.getData('text/plain');
+                    checkSpeedMatch(draggedId, t.id);
+                });
+
+                // Klick-Support für Mobile & Desktop Alternative
+                div.onclick = () => {
+                    if (selectedSpeedSourceId !== null) {
+                        checkSpeedMatch(selectedSpeedSourceId, t.id);
+                    }
+                };
+                targetCol.appendChild(div);
+            });
+        }
+
+        function checkSpeedMatch(srcId, trgId) {
+            if (srcId == trgId) {
+                // Treffer!
+                playGong(659.25, 0.1);
+                addXP(5);
+                
+                const srcEl = document.getElementById(`speed-src-${srcId}`);
+                const trgEl = document.getElementById(`speed-trg-${trgId}`);
+                if(srcEl) srcEl.style.visibility = 'hidden';
+                if(trgEl) trgEl.style.visibility = 'hidden';
+
+                speedActivePairs = speedActivePairs.filter(p => p.id != srcId);
+                selectedSpeedSourceId = null;
+
+                if (speedActivePairs.length === 0 && speedTimeLeft > 0) {
+                    generateSpeedPairs();
+                }
+            } else {
+                // Fehler - kurz rot aufblinken lassen
+                playGong(220, 0.2);
+                const trgEl = document.getElementById(`speed-trg-${trgId}`);
+                if (trgEl) {
+                    trgEl.classList.add('border-[#ea2b2b]', 'bg-[#ea2b2b]/10');
+                    setTimeout(() => trgEl.classList.remove('border-[#ea2b2b]', 'bg-[#ea2b2b]/10'), 300);
+                }
+                selectedSpeedSourceId = null;
+                document.querySelectorAll('#speed-source-column .speed-item').forEach(el => el.classList.remove('border-[#1cb0f6]', 'bg-[#1cb0f6]/10'));
+            }
+        }
+
+        // ==========================================
+        // 🚀 STREAK MEILENSTEINE & LEVEL UP
+        // ==========================================
+        function updateStreakCounter(newStreak) {
+            const oldStreak = gameState.streak;
+            gameState.streak = newStreak;
+            
+            if (newStreak > 0 && newStreak !== oldStreak) {
+                triggerFlameAnimation();
+                // Spezifische Belohnungsfenster für glatte Meilensteine
+                if (newStreak === 5 || newStreak === 10 || newStreak === 20 || newStreak === 50) {
+                    triggerConfettiBurst();
+                    showRewardModal("🔥", "Unaufhaltbar!", `Du hast einen sensationellen Streak von ${newStreak} richtigen Antworten in Folge!`);
+                }
+            }
+        }
+
+        function addXP(amount) { 
+            gameState.xp += amount; 
+            triggerXpFloatAnimation(amount);
+            
+            let target = gameState.level * 100; 
+            if (gameState.xp >= target) { 
+                gameState.xp -= target; 
+                gameState.level++; 
+                playGong(880, 0.6); 
+                triggerConfettiBurst();
+                // Level Up Pop-up Modal triggern!
+                showRewardModal("🚀", `Level Up!`, `Herzlichen Glückwunsch! Du hast Level ${gameState.level} erreicht! Mach weiter so.`);
+            } 
+            saveState(); 
+            updateDashboardUI(); 
+        }
+
+        // ==========================================
+        // ⌨️ WORKFLOW INTERFACES & LISTENERS
+        // ==========================================
         function setupWriteInputFieldListener() {
             document.getElementById('write-input').addEventListener('keydown', (e) => {
                 if (e.key === 'Enter') {
@@ -766,6 +1028,29 @@
 
         function setupGlobalKeyListeners() {
             window.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    // 1. Schließe das Reward-Modal, falls offen
+                    if (!document.getElementById('reward-modal').classList.contains('hidden')) {
+                        closeRewardModal();
+                        e.preventDefault();
+                        return;
+                    }
+                    // 2. Schließe das Reset-Modal, falls offen
+                    if (!document.getElementById('reset-modal').classList.contains('hidden')) {
+                        closeResetModal();
+                        e.preventDefault();
+                        return;
+                    }
+                    // 3. Quiz Mode - Nahtloser Weitersprung via Enter
+                    if (activeMode === 'quiz') {
+                        const nextBtn = document.getElementById('quiz-next-btn');
+                        if (nextBtn && !nextBtn.classList.contains('hidden')) {
+                            nextQuizQuestion();
+                            e.preventDefault();
+                        }
+                    }
+                }
+
                 if (activeMode === 'flashcard' && !isTransitioning) {
                     if (e.key === "ArrowRight") handleVocabKnowledge(true);
                     if (e.key === "ArrowLeft") handleVocabKnowledge(false);
@@ -785,14 +1070,14 @@
                     <p style="font-size: 12px; color: #555; margin-bottom: 20px;">Klasse ${currentGrade} • Unit ${currentUnit} • Erstellt am ${new Date().toLocaleDateString('de-DE')}</p>
                     <div style="background: #f9f9f9; border: 2px dashed #ff9600; padding: 15px; border-radius: 12px; margin-bottom: 25px;">
                         <h3 style="margin: 0 0 5px 0; color: #ff9600; font-weight: 800; font-size: 14px;">💡 Lern-Aufforderung:</h3>
-                        <p style="margin: 0; font-size: 13px; font-weight: 600; line-height: 1.4; color: #333;">Schreibe jedes falsch gewusste oder falsch geschriebene Wort <strong>fünfmal hintereinander</strong> auf eine Zeile in dein Vokabelheft.</p>
+                        <p style="margin: 0; font-size: 13px; font-weight: 600; line-height: 1.4; color: #333;">Schreibe jedes falsch gewusste Wort <strong>fünfmal hintereinander</strong> sauber in dein Heft.</p>
                     </div>
                     <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
                         <thead>
                             <tr style="border-bottom: 2px solid #111; text-align: left; font-size: 13px; font-weight: 800;">
                                 <th style="padding: 8px; width: 35%;">Deutsch</th>
                                 <th style="padding: 8px; width: 35%;">Englische Übersetzung</th>
-                                <th style="padding: 8px; width: 30%;">Meine Notizen / Zeile im Heft</th>
+                                <th style="padding: 8px; width: 30%;">Notizen</th>
                             </tr>
                         </thead>
                         <tbody style="font-size: 14px; font-weight: 600;">
@@ -810,6 +1095,9 @@
             printSection.innerHTML = html; window.print(); printSection.innerHTML = '';
         }
 
+        // ==========================================
+        // 🔊 SPEECH & AUDIO FEEDBACK
+        // ==========================================
         function playAudio(e) {
             if (e) e.stopPropagation(); if (activeStack.length === 0) return;
             let u = new SpeechSynthesisUtterance(activeStack[0].eng.replace(/^\(to\)\s+/i, '')); u.lang = 'en-GB'; window.speechSynthesis.speak(u);
@@ -846,41 +1134,24 @@
         
         function saveState() { localStorage.setItem('vocab_trainer_pro_ux_v6', JSON.stringify(gameState)); }
         
-        function addXP(amount) { 
-            gameState.xp += amount; 
-            triggerXpFloatAnimation(amount); // ✨ Fliegender Text-Trigger!
-            
-            let target = gameState.level * 100; 
-            if (gameState.xp >= target) { 
-                gameState.xp -= target; 
-                gameState.level++; 
-                playGong(880, 0.6); 
-                triggerConfettiBurst(); // 🎉 Level-Up Konfetti!
-            } 
-            saveState(); 
-            updateDashboardUI(); 
-        }
-        
         function updateDashboardUI() {
             document.getElementById('user-level').innerText = gameState.level; document.getElementById('user-xp').innerText = gameState.xp;
             let target = gameState.level * 100; document.getElementById('next-level-xp').innerText = target;
             document.getElementById('xp-bar-fill').style.width = ((gameState.xp / target) * 100) + '%';
             document.getElementById('streak-counter').innerText = gameState.streak; document.getElementById('quiz-score').innerText = "Quiz Score: " + gameState.quizScore;
             
-            // Graue Flamme, wenn der Streak 0 ist (wie bei echten Lern-Apps!)
             const flameEmoji = document.getElementById('flame-emoji');
-            if (gameState.streak === 0) {
-                flameEmoji.style.filter = "grayscale(100%) opacity(40%)";
-            } else {
-                flameEmoji.style.filter = "none";
-            }
+            if (gameState.streak === 0) { flameEmoji.style.filter = "grayscale(100%) opacity(40%)"; } else { flameEmoji.style.filter = "none"; }
 
             if (gameState.badges.firstStep) document.getElementById('badge-first-step').classList.remove('grayscale', 'opacity-40');
             if (gameState.badges.streakMaster) document.getElementById('badge-streak').classList.remove('grayscale', 'opacity-40');
             if (gameState.badges.unitClear) document.getElementById('badge-clear').classList.remove('grayscale', 'opacity-40');
 
+            // 🏅 Dynamische Medaillen-Box Updates basierend auf der selektierten Klasse
+            document.getElementById('medals-box-title').innerText = `🏅 Freigeschaltete Unit-Medaillen (Klasse ${currentGrade})`;
             const medalsContainer = document.getElementById('medals-list');
             medalsContainer.innerHTML = '';
+            
             const clearedList = gameState.clearedUnits[currentGrade] || [];
             if (clearedList.length === 0) {
                 medalsContainer.innerHTML = `<span class="text-xs font-semibold text-[var(--text-muted)] italic">Noch keine Medaillen in Klasse ${currentGrade} errungen. Los geht's! 🚀</span>`;
@@ -888,14 +1159,13 @@
                 clearedList.sort((a,b)=>a-b).forEach(u => {
                     const label = u === 7 ? "IV" : `U${u}`;
                     medalsContainer.innerHTML += `
-                        <span class="inline-flex items-center gap-1 bg-amber-500/10 text-amber-600 dark:text-amber-400 px-2.5 py-1 rounded-xl text-xs font-extrabold border border-amber-500/20 shadow-xs scale-100 transition-transform duration-300 hover:scale-110" title="Unit vollständig beendet!">
+                        <span class="inline-flex items-center gap-1 bg-amber-500/10 text-amber-600 dark:text-amber-400 px-2.5 py-1 rounded-xl text-xs font-extrabold border border-amber-500/20 shadow-xs transition-transform duration-300 hover:scale-110" title="Unit vollständig beendet!">
                             🥇 ${label}
                         </span>`;
                 });
             }
         }
 
-        function confirmReset() { if (confirm("Clear progress?")) { localStorage.removeItem('vocab_trainer_pro_ux_v6'); gameState = { ...defaultState, badges: { ...defaultState.badges }, clearedUnits: {} }; saveState(); updateDashboardUI(); triggerInterfaceReload(); } }
         function clearErrorLists() { quizErrors = []; writeErrors = []; document.getElementById('quiz-error-list-box').classList.add('hidden'); document.getElementById('write-error-list-box').classList.add('hidden'); }
     </script>
 </body>
