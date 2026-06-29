@@ -75,8 +75,6 @@ const e5u0_data = [
     { eng: "door", ger: "Tür", ctx: "classroom" },
     { eng: "clock", ger: "(Wand-, Stand-, Turm-)Uhr", ctx: "noun" },
     { eng: "different", ger: "verschieden; anders", ctx: "six different colours" },
-
-    // --- Page 3 (Bildschirmfoto 2026-06-27 um 22.51.25.jpg) ---
     { eng: "colour", ger: "Farbe", ctx: "What colour is...?" },
     { eng: "red", ger: "rot", ctx: "colour" },
     { eng: "yellow", ger: "gelb", ctx: "colour" },
