@@ -1,4 +1,4 @@
-const e7iv_data = [
+const e10iv_data = [
     { id: "5_iv_1", eng: "build, built, built", phon: "[bɪld], [bɪlt]", ger: "bauen", ctx: "-" },
     { id: "5_iv_2", eng: "win, won, won", phon: "[wɪn], [wʌn]", ger: "gewinnen", ctx: "-" },
     { id: "5_iv_3", eng: "stand, stood, stood", phon: "[stænd], [stʊd]", ger: "stehen; sich hinstellen", ctx: "-" },
