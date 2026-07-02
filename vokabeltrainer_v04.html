@@ -1449,6 +1449,55 @@
             initGlobalKeyListeners();
             loadSelectedPool();
         };
+        // 📱 Isolierte iPad & Touch-Geräte Drag-and-Drop Bridge
+(function() {
+    let draggedId = null;
+    let sourceEl = null;
+
+    document.addEventListener('touchstart', function(e) {
+        // Registriert den Fingerdruck nur auf deinen Speed-Draggables
+        const draggable = e.target.closest('.speed-draggable');
+        if (!draggable) return;
+        
+        sourceEl = draggable;
+        draggedId = draggable.dataset.id;
+        draggable.classList.add('dragging');
+    }, { passive: true });
+
+    document.addEventListener('touchmove', function(e) {
+        if (!sourceEl) return;
+        // Verhindert das Scrollen des iPads, während man ein Element zieht
+        if (e.cancelable) e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener('touchend', function(e) {
+        if (!sourceEl) return;
+        
+        sourceEl.classList.remove('dragging');
+        const touch = e.changedTouches[0];
+        
+        // Ermittelt das Element an der Position, an der der Finger abgehoben wurde
+        const targetEl = document.elementFromPoint(touch.clientX, touch.clientY);
+        const dropzone = targetEl ? targetEl.closest('.speed-dropzone') : null;
+
+        if (dropzone) {
+            // Erstellt ein synthetisches Drop-Event, das die HTML5-Schnittstelle imitiert
+            const mockEvent = new CustomEvent('drop', { bubbles: true, cancelable: true });
+            mockEvent.dataTransfer = {
+                getData: function(format) {
+                    return draggedId;
+                }
+            };
+            mockEvent.preventDefault = function() {};
+            
+            // Feuert das Event direkt auf deiner bestehenden Dropzone ab
+            dropzone.dispatchEvent(mockEvent);
+        }
+
+        draggedId = null;
+        sourceEl = null;
+    }, { passive: true });
+})();
     </script>
 </body>
 </html>
