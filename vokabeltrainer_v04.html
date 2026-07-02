@@ -1449,7 +1449,7 @@
             initGlobalKeyListeners();
             loadSelectedPool();
         };
-// 📱 Optimierte iPad Touch-Bridge mit visuellem Finger-Tracking
+// 📱 iPad Touch-Bridge mit "X-Ray"-Durchblick für perfektes Einrasten
 (function() {
     let draggedId = null;
     let sourceEl = null;
@@ -1463,25 +1463,23 @@
         sourceEl = draggable;
         draggedId = draggable.dataset.id;
         
-        // Startkoordinaten des Fingers merken
         const touch = e.touches[0];
         startX = touch.clientX;
         startY = touch.clientY;
         
         draggable.classList.add('dragging');
-        draggable.style.zIndex = '9999';       // Karte über alles andere legen
-        draggable.style.transition = 'none';   // Verzögerung beim Ziehen ausschalten
+        draggable.style.zIndex = '9999';
+        draggable.style.transition = 'none';
     }, { passive: true });
 
     document.addEventListener('touchmove', function(e) {
         if (!sourceEl) return;
-        if (e.cancelable) e.preventDefault(); // iPad-Scrollen blockieren
+        if (e.cancelable) e.preventDefault();
         
         const touch = e.touches[0];
         const deltaX = touch.clientX - startX;
         const deltaY = touch.clientY - startY;
         
-        // Verschiebt das Element exakt synchron mit der Fingerbewegung
         sourceEl.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(1.02)`;
     }, { passive: false });
 
@@ -1490,13 +1488,22 @@
         
         sourceEl.classList.remove('dragging');
         
-        // Inline-Styles sofort zurücksetzen (falls falsch zugeordnet, schnappt sie zurück)
+        const touch = e.changedTouches[0];
+        
+        // 🔮 Der Trick: Kachel kurz unsichtbar machen, damit das iPad "durch sie hindurch" die Dropzone sieht
+        const originalDisplay = sourceEl.style.display;
+        sourceEl.style.styleDisplay = 'none'; // Verstecken
+        sourceEl.style.display = 'none';
+        
+        const targetEl = document.elementFromPoint(touch.clientX, touch.clientY);
+        
+        sourceEl.style.display = originalDisplay; // Sofort wieder herstellen (unsichtbar für den Nutzer)
+        
+        // Visuals zurücksetzen – falls falsch, springt sie elastisch zurück
         sourceEl.style.transform = '';
         sourceEl.style.zIndex = '';
         sourceEl.style.transition = '';
         
-        const touch = e.changedTouches[0];
-        const targetEl = document.elementFromPoint(touch.clientX, touch.clientY);
         const dropzone = targetEl ? targetEl.closest('.speed-dropzone') : null;
 
         if (dropzone) {
@@ -1507,6 +1514,8 @@
                 }
             };
             mockEvent.preventDefault = function() {};
+            
+            // Feuert das originale Drop-Event zum Einrasten ab
             dropzone.dispatchEvent(mockEvent);
         }
 
