@@ -1449,39 +1449,57 @@
             initGlobalKeyListeners();
             loadSelectedPool();
         };
-        // 📱 Isolierte iPad & Touch-Geräte Drag-and-Drop Bridge
+// 📱 Optimierte iPad Touch-Bridge mit visuellem Finger-Tracking
 (function() {
     let draggedId = null;
     let sourceEl = null;
+    let startX = 0;
+    let startY = 0;
 
     document.addEventListener('touchstart', function(e) {
-        // Registriert den Fingerdruck nur auf deinen Speed-Draggables
         const draggable = e.target.closest('.speed-draggable');
         if (!draggable) return;
         
         sourceEl = draggable;
         draggedId = draggable.dataset.id;
+        
+        // Startkoordinaten des Fingers merken
+        const touch = e.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+        
         draggable.classList.add('dragging');
+        draggable.style.zIndex = '9999';       // Karte über alles andere legen
+        draggable.style.transition = 'none';   // Verzögerung beim Ziehen ausschalten
     }, { passive: true });
 
     document.addEventListener('touchmove', function(e) {
         if (!sourceEl) return;
-        // Verhindert das Scrollen des iPads, während man ein Element zieht
-        if (e.cancelable) e.preventDefault();
+        if (e.cancelable) e.preventDefault(); // iPad-Scrollen blockieren
+        
+        const touch = e.touches[0];
+        const deltaX = touch.clientX - startX;
+        const deltaY = touch.clientY - startY;
+        
+        // Verschiebt das Element exakt synchron mit der Fingerbewegung
+        sourceEl.style.transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(1.02)`;
     }, { passive: false });
 
     document.addEventListener('touchend', function(e) {
         if (!sourceEl) return;
         
         sourceEl.classList.remove('dragging');
-        const touch = e.changedTouches[0];
         
-        // Ermittelt das Element an der Position, an der der Finger abgehoben wurde
+        // Inline-Styles sofort zurücksetzen (falls falsch zugeordnet, schnappt sie zurück)
+        sourceEl.style.transform = '';
+        sourceEl.style.zIndex = '';
+        sourceEl.style.transition = '';
+        
+        const touch = e.changedTouches[0];
         const targetEl = document.elementFromPoint(touch.clientX, touch.clientY);
         const dropzone = targetEl ? targetEl.closest('.speed-dropzone') : null;
 
         if (dropzone) {
-            // Erstellt ein synthetisches Drop-Event, das die HTML5-Schnittstelle imitiert
             const mockEvent = new CustomEvent('drop', { bubbles: true, cancelable: true });
             mockEvent.dataTransfer = {
                 getData: function(format) {
@@ -1489,8 +1507,6 @@
                 }
             };
             mockEvent.preventDefault = function() {};
-            
-            // Feuert das Event direkt auf deiner bestehenden Dropzone ab
             dropzone.dispatchEvent(mockEvent);
         }
 
